@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Jet Smith</title>
   
   
   <link href="/Blog/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-09T10:59:26.391Z</updated>
+  <updated>2018-12-11T07:19:13.214Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Jet Smith</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>“博客名”</title>
-    <link href="http://yoursite.com/2018/12/09/%E2%80%9C%E5%8D%9A%E5%AE%A2%E5%90%8D%E2%80%9D/"/>
-    <id>http://yoursite.com/2018/12/09/“博客名”/</id>
-    <published>2018-12-09T10:59:26.000Z</published>
-    <updated>2018-12-09T10:59:26.391Z</updated>
+    <title>Spark安装手册</title>
+    <link href="http://yoursite.com/2018/12/11/spark%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/"/>
+    <id>http://yoursite.com/2018/12/11/spark安装手册/</id>
+    <published>2018-12-11T07:13:18.000Z</published>
+    <updated>2018-12-11T07:19:13.214Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-Java运行环境"><a href="#1-Java运行环境" class="headerlink" title="1.Java运行环境"></a>1.Java运行环境</h2><h3 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h3><p>wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2F<a href="http://www.oracle.com%2F" target="_blank" rel="noopener">www.oracle.com%2F</a>; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz&quot;" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz&quot;</a></p><p>tar -zxvf jdk-8u171-linux-x64.tar.gz<br>mv jdk1.8.0_171/ /usr/local/</p><p>vim /etc/profile<br>–添加以下<br>set java environment<br>exportJAVA_HOME=/usr/local/jdk1.8.0_171<br>exportJRE_HOME=${JAVA_HOME}/jre<br>exportCLASSPATH=.:${JAVA_HOME}/lib/dt.JAVA_HOME/lib/tools.jar:${JRE_HOME}/lib<br>exportPATH=${JAVA_HOME}/bin:${PATH}</p><p>–使用命令使环境变量立即生效<br>source /etc/profile</p><p>vim /etc/environment<br>–添加以下<br>PATH=”/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$JAVA_HOME/bin”<br>export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>export JAVA_HOME=/usr/local/jdk1.8.0_171</p><p>–输入以下命令使环境变量立即生效<br>source /etc/environment</p><h2 id="2-hadoop"><a href="#2-hadoop" class="headerlink" title="2.hadoop"></a>2.hadoop</h2><h3 id="hadoop版本下载"><a href="#hadoop版本下载" class="headerlink" title="hadoop版本下载"></a>hadoop版本下载</h3><p>hadoop-2.7.6.tar.gz<br>wget “<a href="http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz&quot;" target="_blank" rel="noopener">http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz&quot;</a></p><p>tar -zxvf hadoop-2.7.6.tar.gz -C /usr/</p><p>vim ~/.bashrc</p><h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><p>export HADOOP_HOME=/usr/hadoop-2.7.6<br>export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</p><p>vim /usr/hadoop-2.7.6/etc/hadoop/hadoop-env.sh<br>export JAVA_HOME=/usr/local/jdk1.8.0_171</p><h3 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h3><h4 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h4><p>vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml</p><property><br>    <name>fs.defaultFS</name><br>    <value>/data</value><br></property><br><property><br>    <name>hadoop.tmp.dir</name><br>    <value>/root/hadoop/tmp</value><br></property><p>vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml</p><property><br>  <name>fs.default.name</name><br>    <value>hdfs://localhost:9000</value><br></property><h4 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h4><p>vim /usr/hadoop-2.7.6/etc/hadoop/hdfs-site.xml</p><configuration><br><property><br> <name>dfs.replication</name><br> <value>1</value><br></property><br><br><property><br>  <name>dfs.name.dir</name><br>    <value>/data/hdfs/namenode</value><br></property><br><br><property><br>  <name>dfs.data.dir</name><br>    <value>/data/hdfs/datanode</value><br></property><br></configuration><h4 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h4><p>vim /usr/hadoop-2.7.6/etc/hadoop/yarn-site.xml</p><configuration><br> <property><br>  <name>yarn.nodemanager.aux-services</name><br>    <value>mapreduce_shuffle</value><br> </property><br></configuration><h3 id="hadoop初始化和启动"><a href="#hadoop初始化和启动" class="headerlink" title="hadoop初始化和启动"></a>hadoop初始化和启动</h3><p>初始化hadoop：<br>/usr/hadoop-2.7.6/bin/hdfs namenode -format</p><p>启动<br>$HADOOP_HOME/sbin/start-all.sh</p><h2 id="scala安装"><a href="#scala安装" class="headerlink" title="scala安装"></a>scala安装</h2><p>wget “<a href="https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz&quot;" target="_blank" rel="noopener">https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz&quot;</a></p><p>tar -zxvf scala-2.11.12.tgz<br>mv scala-2.11.12/ /usr/local/</p><p>vim /etc/profile<br>export PATH=”$PATH:/usr/local/scala-2.11.12/bin”</p><h2 id="spark安装"><a href="#spark安装" class="headerlink" title="spark安装"></a>spark安装</h2><p>wget “<a href="http://mirror.bit.edu.cn/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz&quot;" target="_blank" rel="noopener">http://mirror.bit.edu.cn/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz&quot;</a></p><p>tar -zxvf spark-2.3.0-bin-hadoop2.7.tgz -C /usr/</p><p>–添加环境变量<br>vim ~/.bashrc</p><p>export SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7<br>export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH</p><p>cp /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh.template /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh</p><p>vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh</p><p>export SPARK_MASTER_IP=localhost<br>export SPARK_WORKER_MEMORY=8g<br>export JAVA_HOME=/usr/local/jdk1.8.0_171<br>export SCALA_HOME=/usr/local/scala-2.11.12<br>export SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7<br>export HADOOP_CONF_DIR=/usr/hadoop-2.7.6/etc/hadoop<br>export SPARK_LIBRARY_PATH=$SPARK_HOME/lib<br>export SCALA_LIBRARY_PATH=$SPARK_LIBRARY_PATH<br>export SPARK_WORKER_CORES=5<br>export SPARK_WORKER_INSTANCES=1<br>export SPARK_MASTER_PORT=7077</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-Java运行环境&quot;&gt;&lt;a href=&quot;#1-Java运行环境&quot; class=&quot;headerlink&quot; title=&quot;1.Java运行环境&quot;&gt;&lt;/a&gt;1.Java运行环境&lt;/h2&gt;&lt;h3 id=&quot;下载JDK&quot;&gt;&lt;a href=&quot;#下载JDK&quot; class=&quot;he
+      
     
     </summary>
     
