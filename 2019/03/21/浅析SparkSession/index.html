@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/Blog/atom.xml" title="Jet Smith" type="application/atom+xml">
 
@@ -83,18 +81,18 @@
 
 
 
-<meta name="description" content="简单来说reduceByKey、groupByKey都是由combineByKey核心泛型函数实现的，reduceByKey是聚合函数，groupByKey是分组函数，让我们用代码和平均数求解问题，来认识这三个重要的Spark函数。 combineByKey函数def combineByKey[C](         createCombiner: V =&amp;gt; C,         merge">
+<meta name="description" content="在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。而这个入口可就是SparkContext。 SparkContext在Apache Spark中的功能：1.获取spark应用程序的当前状态2.">
 <meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
-<meta property="og:url" content="http://yoursite.com/2019/03/21/认知combineByKey、reduceByKey、groupByKey/index.html">
+<meta property="og:title" content="Spark函数:浅析SparkSession">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/浅析SparkSession/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="简单来说reduceByKey、groupByKey都是由combineByKey核心泛型函数实现的，reduceByKey是聚合函数，groupByKey是分组函数，让我们用代码和平均数求解问题，来认识这三个重要的Spark函数。 combineByKey函数def combineByKey[C](         createCombiner: V =&amp;gt; C,         merge">
+<meta property="og:description" content="在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。而这个入口可就是SparkContext。 SparkContext在Apache Spark中的功能：1.获取spark应用程序的当前状态2.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T06:59:10.819Z">
+<meta property="og:updated_time" content="2019-03-21T08:07:07.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
-<meta name="twitter:description" content="简单来说reduceByKey、groupByKey都是由combineByKey核心泛型函数实现的，reduceByKey是聚合函数，groupByKey是分组函数，让我们用代码和平均数求解问题，来认识这三个重要的Spark函数。 combineByKey函数def combineByKey[C](         createCombiner: V =&amp;gt; C,         merge">
+<meta name="twitter:title" content="Spark函数:浅析SparkSession">
+<meta name="twitter:description" content="在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。而这个入口可就是SparkContext。 SparkContext在Apache Spark中的功能：1.获取spark应用程序的当前状态2.">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/21/认知combineByKey、reduceByKey、groupByKey/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/21/浅析SparkSession/">
 
 
 
 
 
-  <title>Spark函数:浅析combineByKey、reduceByKey、groupByKey | Jet Smith</title>
+  <title>Spark函数:浅析SparkSession | Jet Smith</title>
   
 
 
@@ -287,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/21/认知combineByKey、reduceByKey、groupByKey/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/21/浅析SparkSession/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jet Smith">
@@ -304,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spark函数:浅析combineByKey、reduceByKey、groupByKey</h1>
+          <h1 class="post-title" itemprop="name headline">Spark函数:浅析SparkSession</h1>
         
 
         <div class="post-meta">
@@ -316,7 +314,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-21T14:56:37+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-21T15:21:37+08:00">
                 2019-03-21
               </time>
             
@@ -335,8 +333,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Blog/2019/03/21/认知combineByKey、reduceByKey、groupByKey/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/21/认知combineByKey、reduceByKey、groupByKey/" itemprop="commentsCount"></span>
+                <a href="/Blog/2019/03/21/浅析SparkSession/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/21/浅析SparkSession/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -364,76 +362,92 @@
       
 
       
-        <p>简单来说reduceByKey、groupByKey都是由combineByKey核心泛型函数实现的，reduceByKey是聚合函数，groupByKey是分组函数，让我们用代码和平均数求解问题，来认识这三个重要的Spark函数。</p>
-<h2 id="combineByKey函数"><a href="#combineByKey函数" class="headerlink" title="combineByKey函数"></a>combineByKey函数</h2><pre><code class="bash">def combineByKey[C](  
-      createCombiner: V =&gt; C,  
-      mergeValue: (C, V) =&gt; C,  
-      mergeCombiners: (C, C) =&gt; C,  
-      partitioner: Partitioner,  
-      mapSideCombine: Boolean = <span class="literal">true</span>,  
-      serializer: Serializer = null)
+        <p>在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。<br>在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。<br>而这个入口可就是SparkContext。</p>
+<h2 id="SparkContext在Apache-Spark中的功能："><a href="#SparkContext在Apache-Spark中的功能：" class="headerlink" title="SparkContext在Apache Spark中的功能："></a>SparkContext在Apache Spark中的功能：</h2><p>1.获取spark应用程序的当前状态<br>2.设置配置<br>3.访问各种服务<br>4.取消job<br>5.取消一个stage<br>6.关闭清洁<br>7.注册Spark-Listener<br>8.可编程动态分配<br>9.访问持久性RDD</p>
+<p>SparkConf是创建spark上下文对象所必需的，它存储配置参数，如appName（用于标识spark驱动程序），core的数目和在工作节点上运行的执行程序的内存大小。</p>
+<pre><code class="scala"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>()
+    <span class="comment">//core数目 local 本地单核/ local[2] 本地2核 / local[*]  本地全部核心</span>
+  .setMaster(<span class="string">"local"</span>)  
+  .setAppName(<span class="string">"Spark Practice"</span>)
+<span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)
 </code></pre>
-<h3 id="三个自定义方法"><a href="#三个自定义方法" class="headerlink" title="三个自定义方法"></a>三个自定义方法</h3><h4 id="1-createCombiner"><a href="#1-createCombiner" class="headerlink" title="1.createCombiner"></a>1.createCombiner</h4><p>这个函数把当前rdd中的值（value）作为参数，此时我们可以对其做些附加操作(类型转换)并把它返回 (这一步类似于初始化操作，分区内操作)</p>
-<h4 id="2-mergeValue"><a href="#2-mergeValue" class="headerlink" title="2. mergeValue"></a>2. mergeValue</h4><p>该函数把元素V合并到之前的元素C(createCombiner)上 (每个分区内合并)</p>
-<h4 id="3-mergeCombiner"><a href="#3-mergeCombiner" class="headerlink" title="3. mergeCombiner"></a>3. mergeCombiner</h4><p>该函数把2个元素C合并 (此函数作用范围在rdd的不同分区间内，跨分区合并)</p>
-<h3 id="使用combineByKey求平均数"><a href="#使用combineByKey求平均数" class="headerlink" title="使用combineByKey求平均数"></a>使用combineByKey求平均数</h3><p>测试代码如下：</p>
-<pre><code class="bash">import org.apache.spark.{SparkConf, SparkContext}
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>随着功能模块的不断增加，而为了使用SQL，Hive和Streaming，需要创建单独的上下文。</p>
+<h4 id="创建StreamingContext例子"><a href="#创建StreamingContext例子" class="headerlink" title="创建StreamingContext例子"></a>创建StreamingContext例子</h4><pre><code class="scala"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>()
+  .setMaster(<span class="string">"local[*]"</span>)
+  .setAppName(<span class="string">"NetworkWordCount"</span>)
+  .set(<span class="string">"spark.io.compression.codec"</span>,<span class="string">"snappy"</span>)
+<span class="keyword">val</span> ssc = <span class="keyword">new</span> <span class="type">StreamingContext</span>(conf, <span class="type">Seconds</span>(args(<span class="number">2</span>).toInt))
+</code></pre>
+<h2 id="SparkSession-新入口点"><a href="#SparkSession-新入口点" class="headerlink" title="SparkSession - 新入口点"></a>SparkSession - 新入口点</h2><p>众所周知，在以前的版本中，sparkcontext 是spark的入口点，因为RDD是主要的API，它是使用上下文API创建和操作的。 对于每个其他API，我们需要使用不同的context。</p>
+<p>对于流式传输，我们需要streamingContext。 对于SQL sqlContext和hive hiveContext.，因为dataSet和DataFrame API正在成为新的独立API，我们需要为它们构建入口点。 因此在spark 2.0中，我们为DataSet和DataFrame API创建了一个新的入口点构建，称为Spark-Session。</p>
+<h3 id="创建一个SparkSession入口"><a href="#创建一个SparkSession入口" class="headerlink" title="创建一个SparkSession入口"></a>创建一个SparkSession入口</h3><pre><code class="scala"><span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder()
+  .master(<span class="string">"local"</span>)
+  .appName(<span class="string">"example of SparkSession"</span>)
+  .config(<span class="string">"spark.some.config.option"</span>, <span class="string">"some-value"</span>)
+  .getOrCreate()
+</code></pre>
+<h3 id="完整的代码"><a href="#完整的代码" class="headerlink" title="完整的代码"></a>完整的代码</h3><pre><code class="scala"><span class="keyword">import</span> org.apache.spark.sql.{<span class="type">Row</span>, <span class="type">SparkSession</span>}
+<span class="keyword">import</span> org.apache.spark.sql.types._
 
-object combineByKey {
-  def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf()
-      .<span class="built_in">set</span>(<span class="string">"spark.io.compression.codec"</span>, <span class="string">"snappy"</span>)
-      .setAppName(<span class="string">"dsp_get_request"</span>).setMaster(<span class="string">"local[*]"</span>)
-    val sc = new SparkContext(sparkConf)
+<span class="class"><span class="keyword">object</span> <span class="title">test_SparkSession</span> </span>{
+  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = {
+    <span class="keyword">val</span> spark: <span class="type">SparkSession</span> = <span class="type">SparkSession</span>.builder
+      .appName(<span class="string">"My Spark Application"</span>)  <span class="comment">// optional and will be autogenerated if not specified</span>
+      .master(<span class="string">"local[*]"</span>)               <span class="comment">// avoid hardcoding the deployment environment</span>
+      .config(<span class="string">"spark.io.compression.codec"</span>,<span class="string">"snappy"</span>)
+      .getOrCreate
 
-    val initialScores = Array((<span class="string">"Fred"</span>, 88.0), (<span class="string">"Fred"</span>, 95.0), (<span class="string">"Fred"</span>, 91.0), (<span class="string">"Wilma"</span>, 93.0), (<span class="string">"Wilma"</span>, 95.0), (<span class="string">"Wilma"</span>, 98.0))
-    val d1 = sc.parallelize(initialScores)
-    <span class="built_in">type</span> MVType = (Int, Double) //定义一个元组类型(科目计数器,分数)
-    val rdd2 = d1.combineByKey(
-      score =&gt; (1,score),  // 将score映射为一个元组，作为分区内聚合初始值
-      (c1: MVType , newscore) =&gt; (c1._1 + 1 , c1._2 + newscore),  //分区内聚合
-      (c1: MVType ,c2: MVType) =&gt; (c1._1 + c2._1,c1._2 + c2._2)  //分区间聚合
-    ).map{ <span class="keyword">case</span>(name ,(num ,cnt)) =&gt; (name ,num / cnt)}
-    rdd2.foreach(println)
+    <span class="comment">//使用SparkSession创建DataFrame，并执行spark-SQL</span>
+    <span class="keyword">val</span> customSchema = <span class="type">StructType</span>(
+      <span class="type">List</span>(
+        <span class="type">StructField</span>(<span class="string">"creative"</span>, <span class="type">StringType</span>, <span class="literal">true</span>),
+        <span class="type">StructField</span>(<span class="string">"uv"</span>, <span class="type">IntegerType</span>, <span class="literal">true</span>)
+      )
+    )
+    <span class="keyword">val</span> df = spark.read.format(<span class="string">"com.databricks.spark.csv"</span>)
+      .schema(customSchema)                            <span class="comment">//绑定Schema</span>
+      .load(args(<span class="number">0</span>))
+      .registerTempTable(<span class="string">"creative_id_all_2"</span>)        <span class="comment">//将数据转换成零时表</span>
+
+    <span class="keyword">val</span> <span class="type">SQL</span> = spark.sql(<span class="string">"select * from creative_id_all_2 order by uv desc limit 10"</span>)
+      .show()
+
+
+    <span class="comment">//创建自定义格式</span>
+    <span class="keyword">val</span> schemaString = <span class="string">"name,age"</span>
+    <span class="keyword">val</span> fields = schemaString.split(<span class="string">","</span>).map(fieldName =&gt; <span class="type">StructField</span>(fieldName, <span class="type">StringType</span>, nullable = <span class="literal">true</span>))
+    <span class="keyword">val</span> schema = <span class="type">StructType</span>(fields)
+    <span class="keyword">val</span> personRDD = spark.sparkContext.textFile(args(<span class="number">0</span>))
+    <span class="keyword">val</span> rowRDD = personRDD.map(_.split(<span class="string">","</span>)).map(attr =&gt; <span class="type">Row</span>(attr(<span class="number">0</span>),attr(<span class="number">1</span>).trim()))
+    <span class="keyword">val</span> personDF = spark.createDataFrame(rowRDD,schema).show()
+
+
+    <span class="comment">//原有的sparkContext被包在SparkSession里面</span>
+    <span class="keyword">val</span> file=spark.sparkContext.textFile(args(<span class="number">2</span>))
+
+    <span class="keyword">val</span> word=file.flatMap(lines=&gt;lines.split(<span class="string">" "</span>))
+      .map(word=&gt;(word,<span class="number">1</span>)).reduceByKey(_+_)
+    word.foreach(println)
   }
 }
 
---------------------------------------------------
-(Fred,91.33333333333333)
-(Wilma,95.33333333333333)
+-----------------------
++----------+-------+
+|  creative|     uv|
++----------+-------+
+|<span class="number">1082303000</span>|<span class="number">7769653</span>|
+|<span class="number">1126317000</span>|<span class="number">5979792</span>|
+|<span class="number">1003303000</span>|<span class="number">5890968</span>|
+|<span class="number">1122319000</span>|<span class="number">5616763</span>|
+|<span class="number">1127317000</span>|<span class="number">5410128</span>|
+|<span class="number">1124303000</span>|<span class="number">5396361</span>|
+|<span class="number">1130317000</span>|<span class="number">5332936</span>|
+|<span class="number">1129317000</span>|<span class="number">5293943</span>|
+|<span class="number">1082317000</span>|<span class="number">5034792</span>|
+|<span class="number">1086517001</span>|<span class="number">4982566</span>|
++----------+-------+
 </code></pre>
-<h4 id="使用reduceByKey求平均数"><a href="#使用reduceByKey求平均数" class="headerlink" title="使用reduceByKey求平均数"></a>使用reduceByKey求平均数</h4><p>现在用reduceByKey改写刚才的平均数算法</p>
-<pre><code class="bash">val rdd3 = d1.map(a =&gt; (a._1, (a._2, 1)))
-  .reduceByKey((a,b) =&gt; (a._1+b._1,a._2+b._2))
-  .map(t =&gt; (t._1,t._2._1/t._2._2))
-rdd3.foreach(println)
-</code></pre>
-<h2 id="reduceByKey、groupByKey"><a href="#reduceByKey、groupByKey" class="headerlink" title="reduceByKey、groupByKey"></a>reduceByKey、groupByKey</h2><p>我们再看看reduceByKey、groupByKey的区别：</p>
-<pre><code class="bash">d1.foreach(println)
-------------------------
-(Wilma,93.0)
-(Fred,95.0)
-(Fred,88.0)
-(Fred,91.0)
-(Wilma,95.0)
-(Wilma,98.0)
-
-d1.reduceByKey(_ + _).foreach(println)
--------------------------
-(Wilma,286.0)
-(Fred,274.0)
-
-d1.groupByKey().foreach(println)
--------------------------
-(Wilma,CompactBuffer(93.0, 95.0, 98.0))
-(Fred,CompactBuffer(88.0, 95.0, 91.0))
-</code></pre>
-<h3 id="reduceByKey效率会更高"><a href="#reduceByKey效率会更高" class="headerlink" title="reduceByKey效率会更高"></a>reduceByKey效率会更高</h3><p>其中reduceByKey(_ + _)写法同等于reduceByKey((a,b) =&gt; (a + b))<br>groupByKey会把所有的键值对集合都加载到内存中存储计算，若一个键值对太多，则会导致内存溢出。<br>reduceByKey 进行shuffle之前会在map做合并，这样就会减少shuffle 的IO 传送，效率会高一些。</p>
-<h3 id="groupByKey聚合"><a href="#groupByKey聚合" class="headerlink" title="groupByKey聚合"></a>groupByKey聚合</h3><pre><code class="bash">d1.groupByKey().map(t =&gt; (t._1,t._2.sum)).foreach(println)
--------------------------
-(Fred,274.0)
-(Wilma,286.0)
-</code></pre>
+<p>##拓展阅读：<br><a href="http://www.aboutyun.com/thread-25579-1-1.html" target="_blank" rel="noopener">http://www.aboutyun.com/thread-25579-1-1.html</a><br><a href="http://www.cnblogs.com/zzhangyuhang/p/9039695.html" target="_blank" rel="noopener">http://www.cnblogs.com/zzhangyuhang/p/9039695.html</a></p>
 
       
     </div>
@@ -464,8 +478,8 @@ d1.groupByKey().foreach(println)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2018/12/11/spark安装手册/" rel="next" title="Spark安装指南">
-                <i class="fa fa-chevron-left"></i> Spark安装指南
+              <a href="/Blog/2019/03/21/认知combineByKey、reduceByKey、groupByKey/" rel="next" title="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
+                <i class="fa fa-chevron-left"></i> Spark函数:浅析combineByKey、reduceByKey、groupByKey
               </a>
             
           </div>
@@ -473,10 +487,6 @@ d1.groupByKey().foreach(println)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Blog/2019/03/21/浅析SparkSession/" rel="prev" title="Spark函数:浅析SparkSession">
-                Spark函数:浅析SparkSession <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,7 +623,7 @@ d1.groupByKey().foreach(println)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#combineByKey函数"><span class="nav-number">1.</span> <span class="nav-text">combineByKey函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个自定义方法"><span class="nav-number">1.1.</span> <span class="nav-text">三个自定义方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-createCombiner"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.createCombiner</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-mergeValue"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. mergeValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-mergeCombiner"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. mergeCombiner</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用combineByKey求平均数"><span class="nav-number">1.2.</span> <span class="nav-text">使用combineByKey求平均数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用reduceByKey求平均数"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用reduceByKey求平均数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduceByKey、groupByKey"><span class="nav-number">2.</span> <span class="nav-text">reduceByKey、groupByKey</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reduceByKey效率会更高"><span class="nav-number">2.1.</span> <span class="nav-text">reduceByKey效率会更高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupByKey聚合"><span class="nav-number">2.2.</span> <span class="nav-text">groupByKey聚合</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SparkContext在Apache-Spark中的功能："><span class="nav-number">1.</span> <span class="nav-text">SparkContext在Apache Spark中的功能：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.1.</span> <span class="nav-text">缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建StreamingContext例子"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建StreamingContext例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SparkSession-新入口点"><span class="nav-number">2.</span> <span class="nav-text">SparkSession - 新入口点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个SparkSession入口"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个SparkSession入口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整的代码"><span class="nav-number">2.2.</span> <span class="nav-text">完整的代码</span></a></li></ol></li></ol></div>
             
 
           </div>
