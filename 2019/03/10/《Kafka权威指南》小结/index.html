@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="架构,">
+  <meta name="keywords" content="kafka,">
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp">
-<meta name="keywords" content="架构">
+<meta name="description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
+<meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《企业IT架构转型之道》小结 No.1">
-<meta property="og:url" content="http://yoursite.com/2019/02/27/《企业IT架构转型之道》小结/index.html">
+<meta property="og:title" content="《Kafka权威指南》小结 NO.1">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/《Kafka权威指南》小结/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp">
+<meta property="og:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/Blog/2019/02/27/《企业IT架构转型之道》小结/20190321171954.png">
-<meta property="og:updated_time" content="2019-03-21T10:23:12.358Z">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png">
+<meta property="og:updated_time" content="2019-03-21T10:23:05.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《企业IT架构转型之道》小结 No.1">
-<meta name="twitter:description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp">
-<meta name="twitter:image" content="http://yoursite.com/Blog/2019/02/27/《企业IT架构转型之道》小结/20190321171954.png">
+<meta name="twitter:title" content="《Kafka权威指南》小结 NO.1">
+<meta name="twitter:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
+<meta name="twitter:image" content="http://yoursite.com/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/27/《企业IT架构转型之道》小结/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/10/《Kafka权威指南》小结/">
 
 
 
 
 
-  <title>《企业IT架构转型之道》小结 No.1 | Jet Smith</title>
+  <title>《Kafka权威指南》小结 NO.1 | Jet Smith</title>
   
 
 
@@ -237,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/02/27/《企业IT架构转型之道》小结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/10/《Kafka权威指南》小结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jet Smith">
@@ -254,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《企业IT架构转型之道》小结 No.1</h1>
+          <h1 class="post-title" itemprop="name headline">《Kafka权威指南》小结 NO.1</h1>
         
 
         <div class="post-meta">
@@ -266,8 +266,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T16:56:37+08:00">
-                2019-02-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-10T18:32:34+08:00">
+                2019-03-10
               </time>
             
 
@@ -285,8 +285,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Blog/2019/02/27/《企业IT架构转型之道》小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/02/27/《企业IT架构转型之道》小结/" itemprop="commentsCount"></span>
+                <a href="/Blog/2019/03/10/《Kafka权威指南》小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/10/《Kafka权威指南》小结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,42 +314,104 @@
       
 
       
-        <img src="/Blog/2019/02/27/《企业IT架构转型之道》小结/20190321171954.png" title="《企业IT架构转型之道》小结">
-<h1 id="企业IT架构转型之道"><a href="#企业IT架构转型之道" class="headerlink" title="企业IT架构转型之道"></a>企业IT架构转型之道</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="大数据平台"><a href="#大数据平台" class="headerlink" title="大数据平台"></a>大数据平台</h3><ul>
-<li>数据层访问打通，数据权限的控制。</li>
-<li>数据格式的转换，数据清洗，数据同步。<h3 id="人的配置"><a href="#人的配置" class="headerlink" title="人的配置"></a>人的配置</h3></li>
-<li>缺少能基于数据有业务建模能力的专家</li>
-<li>数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析<h3 id="人的发展"><a href="#人的发展" class="headerlink" title="人的发展"></a>人的发展</h3></li>
-<li>烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。</li>
-<li>而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才<h2 id="共享服务架构选择-amp-建设原则"><a href="#共享服务架构选择-amp-建设原则" class="headerlink" title="共享服务架构选择&amp;建设原则"></a>共享服务架构选择&amp;建设原则</h2><h3 id="企业服务总线（ESB）-实现SOA方案"><a href="#企业服务总线（ESB）-实现SOA方案" class="headerlink" title="企业服务总线（ESB） 实现SOA方案"></a>企业服务总线（ESB） 实现SOA方案</h3></li>
-<li>HSF<ul>
-<li>每一个HSF应用均是以War包形式存在，运行在Tomcat容器，Tomcat容器层集成HSF服务框架，无需引入Jar</li>
-<li>Nginx提供服务器和Diamond的列表信息</li>
-<li>HSF框架采用Netty+Hession 数据序列化协议实现服务交互</li>
-<li>这类RPC协议采用多路复用的TCP长连接，多个服务请求调用同一个长连接</li>
-<li>TPS上达到10w性能远比 REST 或 Web Service 高<h3 id="共享服务中心"><a href="#共享服务中心" class="headerlink" title="共享服务中心"></a>共享服务中心</h3></li>
+        <img src="/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png" title="《Kafka权威指南》小结">
+<h1 id="Kafka权威指南"><a href="#Kafka权威指南" class="headerlink" title="Kafka权威指南"></a>Kafka权威指南</h1><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><h3 id="不同于消息系统"><a href="#不同于消息系统" class="headerlink" title="不同于消息系统"></a>不同于消息系统</h3><ul>
+<li>集群方式运行，自由伸缩</li>
+<li>数据连接层：保证数据传递–复制、持久化<h3 id="更像是实时版的hadoop"><a href="#更像是实时版的hadoop" class="headerlink" title="更像是实时版的hadoop"></a>更像是实时版的hadoop</h3></li>
+<li>流式处理可以是批处理的超集，差异是延时</li>
+<li>hadoop和大数据应用在数据分析</li>
+<li>kafka更适合在核心业务上，快速响应提升用户体验</li>
+<li>概要: 架构设计<h3 id="与ETL工具比较"><a href="#与ETL工具比较" class="headerlink" title="与ETL工具比较"></a>与ETL工具比较</h3></li>
+<li>都擅长移动数据，但kafka颠覆了传统思维</li>
+<li>并不仅仅吧数据从一个系统拆解，塞入另一个系统</li>
+<li>不仅将应用和数据连接，还强化了相同数据流的应用</li>
+<li>概要: 数据流为核心，和现金流一样重要<h2 id="1-初识Kafka"><a href="#1-初识Kafka" class="headerlink" title="1.初识Kafka"></a>1.初识Kafka</h2><h3 id="1-1-发布与订阅消息系统"><a href="#1-1-发布与订阅消息系统" class="headerlink" title="1.1 发布与订阅消息系统"></a>1.1 发布与订阅消息系统</h3></li>
+<li>单个直连的度量指标发布者</li>
+<li>多个个直连的度量指标发布者<ul>
+<li>单独获取，节点间的连接一团糟</li>
 </ul>
 </li>
-<li>设计</li>
-<li>运营</li>
-<li>工程</li>
-<li>概要: 原则<ul>
-<li>高内聚、低耦合<ul>
-<li>业务之间依赖性很大，但服务间隔离性很大</li>
+<li>度量指标发布与订阅系统<ul>
+<li>类似总线，通过统一管道，满足不同需求</li>
 </ul>
 </li>
-<li>数据完整性</li>
-<li>业务可运营性原则（巡检）<ul>
-<li>业务逻辑，数据沉淀，产生价值</li>
+<li>多个发布与订阅系统<ul>
+<li>维护多个数据队列，每个系统有各有缺陷</li>
+<li>你需要一个单一集中式的系统<h3 id="1-2-Kafka登场"><a href="#1-2-Kafka登场" class="headerlink" title="1.2 Kafka登场"></a>1.2 Kafka登场</h3></li>
 </ul>
 </li>
-<li>渐进性的建设原则<h2 id="数据库能力线性扩展"><a href="#数据库能力线性扩展" class="headerlink" title="数据库能力线性扩展"></a>数据库能力线性扩展</h2><h3 id="跨库查询"><a href="#跨库查询" class="headerlink" title="跨库查询"></a>跨库查询</h3></li>
+<li>1.2.1 消息和批次<ul>
+<li>消息有一个可选元数据—-键（一个字节数组）<ul>
+<li>当消息以一种可控方式写入不同分区时，会用到键</li>
+<li>为键生成一个一致性散列值，用散列值对主题分区进行取模，这样可以保证具有相同键的消息总被写在相同分区上</li>
 </ul>
 </li>
-<li>分布式数据层框架TDDL（数据中间件）<ul>
-<li>Matrix层（TDataSourcre）实现分库分表逻辑，底下持有多个GroupDs实例</li>
-<li>Group层（TGroupSource）实现数据库的主备/读写分离逻辑，底层持有多个AtomDs实例</li>
-<li>Atom层（TAtomDataSource）实现数据库连接等信息的动态推送，持有原子的数据源<h2 id="异步化与缓存原则"><a href="#异步化与缓存原则" class="headerlink" title="异步化与缓存原则"></a>异步化与缓存原则</h2><h3 id="数据库事务异步化（将大事务拆成小事务，降低锁占用）"><a href="#数据库事务异步化（将大事务拆成小事务，降低锁占用）" class="headerlink" title="数据库事务异步化（将大事务拆成小事务，降低锁占用）"></a>数据库事务异步化（将大事务拆成小事务，降低锁占用）</h3></li>
+<li>批次是一组消息<ul>
+<li>用于减少网络开销，要在时间延迟和吞吐量上做出权衡</li>
+<li>批次会被压缩，提升传输存储能力，但会做更多计算处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1.2.2 模式<ul>
+<li>消息模式<ul>
+<li>相比JSON XML这类系统，不仅易用，而且可读性好</li>
+<li>但缺乏强类型处理能力，版本间 兼容性不是很好</li>
+</ul>
+</li>
+<li>数据格式一致性，消除消息的读写操作之间的耦合性<ul>
+<li>不需要订阅者升级后，发布者才能跟着升级</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1.2.3 主题和分区<ul>
+<li>消息在topic里不能保证顺序，但单个分区里是顺序的</li>
+<li>Kafka通过分区来实现数据冗余和伸缩性</li>
+<li>流是一组从producer移动到consumer的数据</li>
+</ul>
+</li>
+<li>1.2.4 producer and consumer<ul>
+<li>producer<ul>
+<li>producer在默认的情况下把消息均衡地分布到topic的所有分区上，而不关心特定消息被写到那个partation</li>
+<li>生产者会把消息写到指定分区，通常使用消息键和分区器实现，分区器是键生成的散列值。</li>
+</ul>
+</li>
+<li>consumer<ul>
+<li>消费者通过检查消息的偏移量来区分是否读已取过<ul>
+<li>偏移量是另一种元数据</li>
+</ul>
+</li>
+<li>消费者是消费者群组的一部分<ul>
+<li>消费者于分区之间映射：所有权关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1.2.5 broker 和集群<ul>
+<li>broker<ul>
+<li>一个独立的kafka服务器被称为broker<ul>
+<li>接收producer消息，为消息设置偏移量，提交消息到磁盘</li>
+<li>单个broker可以轻松处理千个分区、每秒百万级消息量</li>
+</ul>
+</li>
+<li>每个集群都有一个broker 同时 充当了–集群控制器<ul>
+<li>一个分区从属一个broker，该broker被称为分区的首领</li>
+<li>一个分区分给多个个broker：复制</li>
+</ul>
+</li>
+<li>保留消息<ul>
+<li>保留一段时间，保留一定大小的字节数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1.2.6 多集群<ul>
+<li>集群间的消息复制：MirrorMaker</li>
 </ul>
 </li>
 </ul>
@@ -370,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/Blog/tags/架构/" rel="tag"># 架构</a>
+            <a href="/Blog/tags/kafka/" rel="tag"># kafka</a>
           
         </div>
       
@@ -383,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2019/02/21/认知combineByKey、reduceByKey、groupByKey/" rel="next" title="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
-                <i class="fa fa-chevron-left"></i> Spark函数:浅析combineByKey、reduceByKey、groupByKey
+              <a href="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/" rel="next" title="浅析ACID、BASE、CAP原理">
+                <i class="fa fa-chevron-left"></i> 浅析ACID、BASE、CAP原理
               </a>
             
           </div>
@@ -392,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/" rel="prev" title="浅析ACID、BASE、CAP原理">
-                浅析ACID、BASE、CAP原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#企业IT架构转型之道"><span class="nav-number">1.</span> <span class="nav-text">企业IT架构转型之道</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大数据平台"><span class="nav-number">1.1.1.</span> <span class="nav-text">大数据平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人的配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">人的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人的发展"><span class="nav-number">1.1.3.</span> <span class="nav-text">人的发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享服务架构选择-amp-建设原则"><span class="nav-number">1.2.</span> <span class="nav-text">共享服务架构选择&amp;建设原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#企业服务总线（ESB）-实现SOA方案"><span class="nav-number">1.2.1.</span> <span class="nav-text">企业服务总线（ESB） 实现SOA方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享服务中心"><span class="nav-number">1.2.2.</span> <span class="nav-text">共享服务中心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库能力线性扩展"><span class="nav-number">1.3.</span> <span class="nav-text">数据库能力线性扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨库查询"><span class="nav-number">1.3.1.</span> <span class="nav-text">跨库查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步化与缓存原则"><span class="nav-number">1.4.</span> <span class="nav-text">异步化与缓存原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库事务异步化（将大事务拆成小事务，降低锁占用）"><span class="nav-number">1.4.1.</span> <span class="nav-text">数据库事务异步化（将大事务拆成小事务，降低锁占用）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kafka权威指南"><span class="nav-number">1.</span> <span class="nav-text">Kafka权威指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-前言"><span class="nav-number">1.1.</span> <span class="nav-text">0.前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同于消息系统"><span class="nav-number">1.1.1.</span> <span class="nav-text">不同于消息系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更像是实时版的hadoop"><span class="nav-number">1.1.2.</span> <span class="nav-text">更像是实时版的hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与ETL工具比较"><span class="nav-number">1.1.3.</span> <span class="nav-text">与ETL工具比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-初识Kafka"><span class="nav-number">1.2.</span> <span class="nav-text">1.初识Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-发布与订阅消息系统"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 发布与订阅消息系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Kafka登场"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2 Kafka登场</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
