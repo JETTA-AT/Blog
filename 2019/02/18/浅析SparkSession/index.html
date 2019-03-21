@@ -85,14 +85,16 @@
 <meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark函数:浅析SparkSession">
-<meta property="og:url" content="http://yoursite.com/2019/03/21/浅析SparkSession/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/浅析SparkSession/index.html">
 <meta property="og:site_name" content="Jet Smith">
 <meta property="og:description" content="在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。而这个入口可就是SparkContext。 SparkContext在Apache Spark中的功能：1.获取spark应用程序的当前状态2.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T08:07:07.135Z">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/02/18/浅析SparkSession/145518ondfhiyihbwdoidw.jpg">
+<meta property="og:updated_time" content="2019-03-21T08:44:29.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark函数:浅析SparkSession">
 <meta name="twitter:description" content="在理解spark-session之前让我们理解入口点，一个入口点是控制从操作系统传递到提供的程序的地方。在2.0入口之前，spark-core是sparkContext.Apache Spark是一个功能强大的集群计算引擎，因此它专为快速计算大数据而设计。而这个入口可就是SparkContext。 SparkContext在Apache Spark中的功能：1.获取spark应用程序的当前状态2.">
+<meta name="twitter:image" content="http://yoursite.com/Blog/2019/02/18/浅析SparkSession/145518ondfhiyihbwdoidw.jpg">
 
 
 
@@ -122,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/21/浅析SparkSession/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/18/浅析SparkSession/">
 
 
 
@@ -285,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/21/浅析SparkSession/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/02/18/浅析SparkSession/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jet Smith">
@@ -314,8 +316,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-21T15:21:37+08:00">
-                2019-03-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-18T17:21:37+08:00">
+                2019-02-18
               </time>
             
 
@@ -333,8 +335,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Blog/2019/03/21/浅析SparkSession/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/21/浅析SparkSession/" itemprop="commentsCount"></span>
+                <a href="/Blog/2019/02/18/浅析SparkSession/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/02/18/浅析SparkSession/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -380,6 +382,7 @@
 </code></pre>
 <h2 id="SparkSession-新入口点"><a href="#SparkSession-新入口点" class="headerlink" title="SparkSession - 新入口点"></a>SparkSession - 新入口点</h2><p>众所周知，在以前的版本中，sparkcontext 是spark的入口点，因为RDD是主要的API，它是使用上下文API创建和操作的。 对于每个其他API，我们需要使用不同的context。</p>
 <p>对于流式传输，我们需要streamingContext。 对于SQL sqlContext和hive hiveContext.，因为dataSet和DataFrame API正在成为新的独立API，我们需要为它们构建入口点。 因此在spark 2.0中，我们为DataSet和DataFrame API创建了一个新的入口点构建，称为Spark-Session。</p>
+<img src="/Blog/2019/02/18/浅析SparkSession/145518ondfhiyihbwdoidw.jpg" title="浅析SparkSession">
 <h3 id="创建一个SparkSession入口"><a href="#创建一个SparkSession入口" class="headerlink" title="创建一个SparkSession入口"></a>创建一个SparkSession入口</h3><pre><code class="scala"><span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder()
   .master(<span class="string">"local"</span>)
   .appName(<span class="string">"example of SparkSession"</span>)
@@ -478,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2019/03/21/认知combineByKey、reduceByKey、groupByKey/" rel="next" title="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
-                <i class="fa fa-chevron-left"></i> Spark函数:浅析combineByKey、reduceByKey、groupByKey
+              <a href="/Blog/2018/12/11/spark安装手册/" rel="next" title="Spark安装指南">
+                <i class="fa fa-chevron-left"></i> Spark安装指南
               </a>
             
           </div>
@@ -487,6 +490,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog/2019/02/21/认知combineByKey、reduceByKey、groupByKey/" rel="prev" title="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
+                Spark函数:浅析combineByKey、reduceByKey、groupByKey <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -570,7 +577,7 @@
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -583,7 +590,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

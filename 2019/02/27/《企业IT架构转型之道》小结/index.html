@@ -68,12 +68,10 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="架构,">
 
 
 
-
-  
 
 
   <link rel="alternate" href="/Blog/atom.xml" title="Jet Smith" type="application/atom+xml">
@@ -83,17 +81,18 @@
 
 
 
-<meta name="description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta name="description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp;">
+<meta name="keywords" content="架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spark安装指南">
-<meta property="og:url" content="http://yoursite.com/2018/12/11/spark安装手册/index.html">
+<meta property="og:title" content="《企业IT架构转型之道》小结">
+<meta property="og:url" content="http://yoursite.com/2019/02/27/《企业IT架构转型之道》小结/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta property="og:description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T03:38:05.080Z">
+<meta property="og:updated_time" content="2019-03-21T09:16:35.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spark安装指南">
-<meta name="twitter:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta name="twitter:title" content="《企业IT架构转型之道》小结">
+<meta name="twitter:description" content="企业IT架构转型之道基础大数据平台 数据层访问打通，数据权限的控制。 数据格式的转换，数据清洗，数据同步。人的配置 缺少能基于数据有业务建模能力的专家 数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析人的发展 烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。 而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才共享服务架构选择&amp;amp;">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/11/spark安装手册/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/27/《企业IT架构转型之道》小结/">
 
 
 
 
 
-  <title>Spark安装指南 | Jet Smith</title>
+  <title>《企业IT架构转型之道》小结 | Jet Smith</title>
   
 
 
@@ -286,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2018/12/11/spark安装手册/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/02/27/《企业IT架构转型之道》小结/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jet Smith">
@@ -303,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spark安装指南</h1>
+          <h1 class="post-title" itemprop="name headline">《企业IT架构转型之道》小结</h1>
         
 
         <div class="post-meta">
@@ -315,8 +314,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-11T11:34:48+08:00">
-                2018-12-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T16:56:37+08:00">
+                2019-02-27
               </time>
             
 
@@ -334,8 +333,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Blog/2018/12/11/spark安装手册/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2018/12/11/spark安装手册/" itemprop="commentsCount"></span>
+                <a href="/Blog/2019/02/27/《企业IT架构转型之道》小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/02/27/《企业IT架构转型之道》小结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -363,134 +362,44 @@
       
 
       
-        <p>在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。<br>一步步你会成功！</p>
-<h2 id="1-Java运行环境"><a href="#1-Java运行环境" class="headerlink" title="1.Java运行环境"></a>1.Java运行环境</h2><h3 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h3><pre><code class="bash">wget --no-cookies --no-check-certificate --header <span class="string">"Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"</span> <span class="string">"http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz"</span>
-tar -zxvf jdk-8u171-linux-x64.tar.gz
-mv jdk1.8.0_171/ /usr/<span class="built_in">local</span>/
-</code></pre>
-<p>添加环境变量</p>
-<pre><code class="bash">vim /etc/profile
---添加以下
-<span class="built_in">set</span> java environment
-exportJAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-exportJRE_HOME=<span class="variable">${JAVA_HOME}</span>/jre
-exportCLASSPATH=.:<span class="variable">${JAVA_HOME}</span>/lib/dt.JAVA_HOME/lib/tools.jar:<span class="variable">${JRE_HOME}</span>/lib
-exportPATH=<span class="variable">${JAVA_HOME}</span>/bin:<span class="variable">${PATH}</span>
-</code></pre>
-<p>使用命令使环境变量立即生效</p>
-<pre><code class="bash"><span class="built_in">source</span> /etc/profile
-</code></pre>
-<p>添加环境变量</p>
-<pre><code class="bash">vim /etc/environment
-
-PATH=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:<span class="variable">$JAVA_HOME</span>/bin"</span>
-<span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib:<span class="variable">$JAVA_HOME</span>/jre/lib
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-</code></pre>
-<p>输入以下命令使环境变量立即生效</p>
-<pre><code class="bash"><span class="built_in">source</span> /etc/environment
-</code></pre>
-<h2 id="2-hadoop"><a href="#2-hadoop" class="headerlink" title="2.hadoop"></a>2.hadoop</h2><h3 id="hadoop版本下载"><a href="#hadoop版本下载" class="headerlink" title="hadoop版本下载"></a>hadoop版本下载</h3><p>hadoop-2.7.6.tar.gz</p>
-<pre><code class="bash">wget <span class="string">"http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz"</span>
-``` bash
-
-``` bash
-tar -zxvf hadoop-2.7.6.tar.gz -C /usr/
-</code></pre>
-<h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><pre><code class="bash">vim ~/.bashrc
-<span class="built_in">export</span> HADOOP_HOME=/usr/hadoop-2.7.6
-<span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$HADOOP_HOME</span>/sbin
-
-vim /usr/hadoop-2.7.6/etc/hadoop/hadoop-env.sh
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-</code></pre>
-<h3 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h3><h4 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
-
-&lt;property&gt;
-    &lt;name&gt;fs.defaultFS&lt;/name&gt;
-    &lt;value&gt;/data&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-    &lt;value&gt;/root/hadoop/tmp&lt;/value&gt;
-&lt;/property&gt;
-
-vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
-
-&lt;property&gt;
-  &lt;name&gt;fs.default.name&lt;/name&gt;
-    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-&lt;/property&gt;
-</code></pre>
-<h4 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/hdfs-site.xml
-
-&lt;configuration&gt;
-&lt;property&gt;
- &lt;name&gt;dfs.replication&lt;/name&gt;
- &lt;value&gt;1&lt;/value&gt;
-&lt;/property&gt;
-
-&lt;property&gt;
-  &lt;name&gt;dfs.name.dir&lt;/name&gt;
-    &lt;value&gt;/data/hdfs/namenode&lt;/value&gt;
-&lt;/property&gt;
-
-&lt;property&gt;
-  &lt;name&gt;dfs.data.dir&lt;/name&gt;
-    &lt;value&gt;/data/hdfs/datanode&lt;/value&gt;
-&lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre>
-<h4 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/yarn-site.xml
-
-&lt;configuration&gt;
- &lt;property&gt;
-  &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
-    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
- &lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre>
-<h3 id="hadoop初始化和启动"><a href="#hadoop初始化和启动" class="headerlink" title="hadoop初始化和启动"></a>hadoop初始化和启动</h3><p>初始化hadoop：</p>
-<pre><code class="bash">/usr/hadoop-2.7.6/bin/hdfs namenode -format
-</code></pre>
-<p>##启动hadoop</p>
-<pre><code class="bash"><span class="variable">$HADOOP_HOME</span>/sbin/start-all.sh
-</code></pre>
-<h2 id="scala安装"><a href="#scala安装" class="headerlink" title="scala安装"></a>scala安装</h2><pre><code class="bash">wget <span class="string">"https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz"</span>
-
-tar -zxvf scala-2.11.12.tgz
-mv scala-2.11.12/ /usr/<span class="built_in">local</span>/
-
-vim /etc/profile
-<span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:/usr/local/scala-2.11.12/bin"</span>
-</code></pre>
-<h2 id="spark安装"><a href="#spark安装" class="headerlink" title="spark安装"></a>spark安装</h2><pre><code class="bash">wget <span class="string">"http://mirror.bit.edu.cn/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz"</span>
-
-tar -zxvf spark-2.3.0-bin-hadoop2.7.tgz -C /usr/
-</code></pre>
-<p>###添加环境变量</p>
-<pre><code class="bash">vim ~/.bashrc
-
-<span class="built_in">export</span> SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7
-<span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$SPARK_HOME</span>/sbin:<span class="variable">$PATH</span>
-</code></pre>
-<p>###修改spark配置</p>
-<pre><code class="bash">cp /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh.template /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
-
-vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
-
-<span class="built_in">export</span> SPARK_MASTER_IP=localhost
-<span class="built_in">export</span> SPARK_WORKER_MEMORY=8g 
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-<span class="built_in">export</span> SCALA_HOME=/usr/<span class="built_in">local</span>/scala-2.11.12 
-<span class="built_in">export</span> SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7 
-<span class="built_in">export</span> HADOOP_CONF_DIR=/usr/hadoop-2.7.6/etc/hadoop
-<span class="built_in">export</span> SPARK_LIBRARY_PATH=<span class="variable">$SPARK_HOME</span>/lib 
-<span class="built_in">export</span> SCALA_LIBRARY_PATH=<span class="variable">$SPARK_LIBRARY_PATH</span> 
-<span class="built_in">export</span> SPARK_WORKER_CORES=5
-<span class="built_in">export</span> SPARK_WORKER_INSTANCES=1
-<span class="built_in">export</span> SPARK_MASTER_PORT=7077
-</code></pre>
+        <h1 id="企业IT架构转型之道"><a href="#企业IT架构转型之道" class="headerlink" title="企业IT架构转型之道"></a>企业IT架构转型之道</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="大数据平台"><a href="#大数据平台" class="headerlink" title="大数据平台"></a>大数据平台</h3><ul>
+<li>数据层访问打通，数据权限的控制。</li>
+<li>数据格式的转换，数据清洗，数据同步。<h3 id="人的配置"><a href="#人的配置" class="headerlink" title="人的配置"></a>人的配置</h3></li>
+<li>缺少能基于数据有业务建模能力的专家</li>
+<li>数据采集，数学算法，数学软件，数据分析，预测分析，市场应用，决策分析<h3 id="人的发展"><a href="#人的发展" class="headerlink" title="人的发展"></a>人的发展</h3></li>
+<li>烟囱式系统建设，不同的角色技术人员很难对某一业务领域有持续的理解和沉淀。</li>
+<li>而采用环绕服务能力持续运营构建独立组织的形态，懂技术懂业务的复合型人才<h2 id="共享服务架构选择-amp-建设原则"><a href="#共享服务架构选择-amp-建设原则" class="headerlink" title="共享服务架构选择&amp;建设原则"></a>共享服务架构选择&amp;建设原则</h2><h3 id="企业服务总线（ESB）-实现SOA方案"><a href="#企业服务总线（ESB）-实现SOA方案" class="headerlink" title="企业服务总线（ESB） 实现SOA方案"></a>企业服务总线（ESB） 实现SOA方案</h3></li>
+<li>HSF<ul>
+<li>每一个HSF应用均是以War包形式存在，运行在Tomcat容器，Tomcat容器层集成HSF服务框架，无需引入Jar</li>
+<li>Nginx提供服务器和Diamond的列表信息</li>
+<li>HSF框架采用Netty+Hession 数据序列化协议实现服务交互</li>
+<li>这类RPC协议采用多路复用的TCP长连接，多个服务请求调用同一个长连接</li>
+<li>TPS上达到10w性能远比 REST 或 Web Service 高<h3 id="共享服务中心"><a href="#共享服务中心" class="headerlink" title="共享服务中心"></a>共享服务中心</h3></li>
+</ul>
+</li>
+<li>设计</li>
+<li>运营</li>
+<li>工程</li>
+<li>概要: 原则<ul>
+<li>高内聚、低耦合<ul>
+<li>业务之间依赖性很大，但服务间隔离性很大</li>
+</ul>
+</li>
+<li>数据完整性</li>
+<li>业务可运营性原则（巡检）<ul>
+<li>业务逻辑，数据沉淀，产生价值</li>
+</ul>
+</li>
+<li>渐进性的建设原则<h2 id="数据库能力线性扩展"><a href="#数据库能力线性扩展" class="headerlink" title="数据库能力线性扩展"></a>数据库能力线性扩展</h2><h3 id="跨库查询"><a href="#跨库查询" class="headerlink" title="跨库查询"></a>跨库查询</h3></li>
+</ul>
+</li>
+<li>分布式数据层框架TDDL（数据中间件）<ul>
+<li>Matrix层（TDataSourcre）实现分库分表逻辑，底下持有多个GroupDs实例</li>
+<li>Group层（TGroupSource）实现数据库的主备/读写分离逻辑，底层持有多个AtomDs实例</li>
+<li>Atom层（TAtomDataSource）实现数据库连接等信息的动态推送，持有原子的数据源<h2 id="异步化与缓存原则"><a href="#异步化与缓存原则" class="headerlink" title="异步化与缓存原则"></a>异步化与缓存原则</h2><h3 id="数据库事务异步化（将大事务拆成小事务，降低锁占用）"><a href="#数据库事务异步化（将大事务拆成小事务，降低锁占用）" class="headerlink" title="数据库事务异步化（将大事务拆成小事务，降低锁占用）"></a>数据库事务异步化（将大事务拆成小事务，降低锁占用）</h3></li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -506,6 +415,12 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/Blog/tags/架构/" rel="tag"># 架构</a>
+          
+        </div>
+      
 
       
       
@@ -515,8 +430,8 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2018/12/11/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/Blog/2019/02/21/认知combineByKey、reduceByKey、groupByKey/" rel="next" title="Spark函数:浅析combineByKey、reduceByKey、groupByKey">
+                <i class="fa fa-chevron-left"></i> Spark函数:浅析combineByKey、reduceByKey、groupByKey
               </a>
             
           </div>
@@ -525,8 +440,8 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/2019/02/18/浅析SparkSession/" rel="prev" title="Spark函数:浅析SparkSession">
-                Spark函数:浅析SparkSession <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/" rel="prev" title="浅析ACID、BASE、CAP原理">
+                浅析ACID、BASE、CAP原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -664,7 +579,7 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java运行环境"><span class="nav-number">1.</span> <span class="nav-text">1.Java运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载JDK"><span class="nav-number">1.1.</span> <span class="nav-text">下载JDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-hadoop"><span class="nav-number">2.</span> <span class="nav-text">2.hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop版本下载"><span class="nav-number">2.1.</span> <span class="nav-text">hadoop版本下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.2.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件设置"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#core-site-xml"><span class="nav-number">2.3.1.</span> <span class="nav-text">core-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hdfs-site-xml"><span class="nav-number">2.3.2.</span> <span class="nav-text">hdfs-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yarn-site-xml"><span class="nav-number">2.3.3.</span> <span class="nav-text">yarn-site.xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop初始化和启动"><span class="nav-number">2.4.</span> <span class="nav-text">hadoop初始化和启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scala安装"><span class="nav-number">3.</span> <span class="nav-text">scala安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark安装"><span class="nav-number">4.</span> <span class="nav-text">spark安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#企业IT架构转型之道"><span class="nav-number">1.</span> <span class="nav-text">企业IT架构转型之道</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大数据平台"><span class="nav-number">1.1.1.</span> <span class="nav-text">大数据平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人的配置"><span class="nav-number">1.1.2.</span> <span class="nav-text">人的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人的发展"><span class="nav-number">1.1.3.</span> <span class="nav-text">人的发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享服务架构选择-amp-建设原则"><span class="nav-number">1.2.</span> <span class="nav-text">共享服务架构选择&amp;建设原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#企业服务总线（ESB）-实现SOA方案"><span class="nav-number">1.2.1.</span> <span class="nav-text">企业服务总线（ESB） 实现SOA方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享服务中心"><span class="nav-number">1.2.2.</span> <span class="nav-text">共享服务中心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库能力线性扩展"><span class="nav-number">1.3.</span> <span class="nav-text">数据库能力线性扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨库查询"><span class="nav-number">1.3.1.</span> <span class="nav-text">跨库查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步化与缓存原则"><span class="nav-number">1.4.</span> <span class="nav-text">异步化与缓存原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库事务异步化（将大事务拆成小事务，降低锁占用）"><span class="nav-number">1.4.1.</span> <span class="nav-text">数据库事务异步化（将大事务拆成小事务，降低锁占用）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
