@@ -68,12 +68,10 @@
 
 
 
-  <meta name="keywords" content="原理,">
+  <meta name="keywords" content="Spark,">
 
 
 
-
-  
 
 
   <link rel="alternate" href="/Blog/atom.xml" title="Jet Smith" type="application/atom+xml">
@@ -83,20 +81,23 @@
 
 
 
-<meta name="description" content="浅析ACID、BASE、CAP原理 ACID保证永久更新数据库 原子性Atomic 不可分割，只有全部成功，才算成功   一致性Consistency 不能破坏业务逻辑上的一致性，转账存款总额不变 数据库的约束 级联和Trigger都必须满足事务的一致性   隔离性Isolation 并发环境中，各事务都有各自完整数据空间 事务锁     持久性Durability 事务结束，数据库更改必须永久">
-<meta name="keywords" content="原理">
+<meta name="description" content="文章转自: Adaptive Execution 让 Spark SQL 更高效更智能 动态设置 Shuffle Partition2.1 Spark Shuffle 原理Spark Shuffle 一般用于将上游 Stage 中的数据按 Key 分区，保证来自不同 Mapper （表示上游 Stage 的 Task）的相同的 Key 进入相同的 Reducer （表示下游 Stage 的 Tas">
+<meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析ACID、BASE、CAP原理">
-<meta property="og:url" content="http://yoursite.com/2019/03/03/浅析ACID、BASE、CAP原理/index.html">
+<meta property="og:title" content="【转】Spark动态设置 Shuffle Partition">
+<meta property="og:url" content="http://yoursite.com/2019/03/01/【转】Spark动态设置 Shuffle Partition/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="浅析ACID、BASE、CAP原理 ACID保证永久更新数据库 原子性Atomic 不可分割，只有全部成功，才算成功   一致性Consistency 不能破坏业务逻辑上的一致性，转账存款总额不变 数据库的约束 级联和Trigger都必须满足事务的一致性   隔离性Isolation 并发环境中，各事务都有各自完整数据空间 事务锁     持久性Durability 事务结束，数据库更改必须永久">
+<meta property="og:description" content="文章转自: Adaptive Execution 让 Spark SQL 更高效更智能 动态设置 Shuffle Partition2.1 Spark Shuffle 原理Spark Shuffle 一般用于将上游 Stage 中的数据按 Key 分区，保证来自不同 Mapper （表示上游 Stage 的 Task）的相同的 Key 进入相同的 Reducer （表示下游 Stage 的 Tas">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/Blog/2019/03/03/浅析ACID、BASE、CAP原理/20190321170312.png">
-<meta property="og:updated_time" content="2019-03-21T09:11:22.074Z">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer_detail.png">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer.png">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_auto_reducer_detail_1.png">
+<meta property="og:image" content="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer.png">
+<meta property="og:updated_time" content="2019-03-22T03:13:54.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅析ACID、BASE、CAP原理">
-<meta name="twitter:description" content="浅析ACID、BASE、CAP原理 ACID保证永久更新数据库 原子性Atomic 不可分割，只有全部成功，才算成功   一致性Consistency 不能破坏业务逻辑上的一致性，转账存款总额不变 数据库的约束 级联和Trigger都必须满足事务的一致性   隔离性Isolation 并发环境中，各事务都有各自完整数据空间 事务锁     持久性Durability 事务结束，数据库更改必须永久">
-<meta name="twitter:image" content="http://yoursite.com/Blog/2019/03/03/浅析ACID、BASE、CAP原理/20190321170312.png">
+<meta name="twitter:title" content="【转】Spark动态设置 Shuffle Partition">
+<meta name="twitter:description" content="文章转自: Adaptive Execution 让 Spark SQL 更高效更智能 动态设置 Shuffle Partition2.1 Spark Shuffle 原理Spark Shuffle 一般用于将上游 Stage 中的数据按 Key 分区，保证来自不同 Mapper （表示上游 Stage 的 Task）的相同的 Key 进入相同的 Reducer （表示下游 Stage 的 Tas">
+<meta name="twitter:image" content="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer_detail.png">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/03/浅析ACID、BASE、CAP原理/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/01/【转】Spark动态设置 Shuffle Partition/">
 
 
 
 
 
-  <title>浅析ACID、BASE、CAP原理 | Jet Smith</title>
+  <title>【转】Spark动态设置 Shuffle Partition | Jet Smith</title>
   
 
 
@@ -239,7 +240,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/03/浅析ACID、BASE、CAP原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Blog/2019/03/01/【转】Spark动态设置 Shuffle Partition/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jet Smith">
@@ -256,7 +257,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅析ACID、BASE、CAP原理</h1>
+          <h1 class="post-title" itemprop="name headline">【转】Spark动态设置 Shuffle Partition</h1>
         
 
         <div class="post-meta">
@@ -268,8 +269,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T16:56:37+08:00">
-                2019-03-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T17:21:37+08:00">
+                2019-03-01
               </time>
             
 
@@ -287,8 +288,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/" itemprop="commentsCount"></span>
+                <a href="/Blog/2019/03/01/【转】Spark动态设置 Shuffle Partition/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/Blog/2019/03/01/【转】Spark动态设置 Shuffle Partition/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -316,81 +317,17 @@
       
 
       
-        <img src="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/20190321170312.png" title="浅析ACID、BASE、CAP原理">
-<h3 id="浅析ACID、BASE、CAP原理"><a href="#浅析ACID、BASE、CAP原理" class="headerlink" title="浅析ACID、BASE、CAP原理"></a>浅析ACID、BASE、CAP原理</h3><ul>
-<li>ACID保证永久更新数据库<ul>
-<li>原子性Atomic<ul>
-<li>不可分割，只有全部成功，才算成功</li>
-</ul>
-</li>
-<li>一致性Consistency<ul>
-<li>不能破坏业务逻辑上的一致性，转账存款总额不变</li>
-<li>数据库的约束 级联和Trigger都必须满足事务的一致性</li>
-</ul>
-</li>
-<li>隔离性Isolation<ul>
-<li>并发环境中，各事务都有各自完整数据空间<ul>
-<li>事务锁</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>持久性Durability<ul>
-<li>事务结束，数据库更改必须永久保存，重启依旧恢复事务成功结束状态</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>CAP理论<ul>
-<li>一致性Consistency<ul>
-<li>同样数据在分布式系统中所有地方都是被复制成相同</li>
-</ul>
-</li>
-<li>可用性Availability<ul>
-<li>所有在分布式系统活跃的节点都能处理操作且能响应查询</li>
-<li>可用并不意味着数据的一致，比如过期的数据或脏读</li>
-</ul>
-</li>
-<li>分区容错性Partition tolerancce<ul>
-<li>除整个网络故障外，均导致整个系统无法正确响应</li>
-</ul>
-</li>
-<li>理论：一个分布式系统最多只能同时满足三项中的两项</li>
-</ul>
-</li>
-<li>BASE理论<ul>
-<li>核心思想<ul>
-<li>基于CAP理论何其基础上的延伸出来的 BASE 理论，有人提出柔性事务概念</li>
-<li>即时无法做到强一致性，但每个应用都可以根据自身业务特点，采用适当的方式来使系统达到最终一致性</li>
-<li>与 ACID 相比，以牺牲强一致性获得高可用性</li>
-</ul>
-</li>
-<li>基本可用 Basically Available<ul>
-<li>核心可用，系统故障允许损失大部分可用性</li>
-<li>降级服务，应对访问量激增，屏蔽一些功能</li>
-</ul>
-</li>
-<li>柔性状态 Soft State<ul>
-<li>允许中间状态，并不影响整体可用性<ul>
-<li>例如三个副本，允许不同节点件的副本同步延迟时</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>最终一致性 Eventual Consitency<ul>
-<li>副本经过一定时间后，最终达到一致状态</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>后记<ul>
-<li>单机系统总线不会丢数据，而网络会。机器间的通讯，可能是收到，未收到，不知道收没收到，同步状态成本很高<ul>
-<li>Paxos 确保一致性，但只有到一半以上确认后才能确认成功，这种强同步不是最终一致性</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+        <p>文章转自: <a href="http://www.jasongj.com/spark/adaptive_execution/" target="_blank" rel="noopener">Adaptive Execution 让 Spark SQL 更高效更智能</a></p>
+<p>动态设置 Shuffle Partition<br>2.1 Spark Shuffle 原理<br>Spark Shuffle 一般用于将上游 Stage 中的数据按 Key 分区，保证来自不同 Mapper （表示上游 Stage 的 Task）的相同的 Key 进入相同的 Reducer （表示下游 Stage 的 Task）。一般用于 group by 或者 Join 操作。</p>
+<img src="/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer_detail.png" title="【转】Spark动态设置 Shuffle Partition">
+<p>如上图所示，该 Shuffle 总共有 2 个 Mapper 与 5 个 Reducer。每个 Mapper 会按相同的规则（由 Partitioner 定义）将自己的数据分为五份。每个 Reducer 从这两个 Mapper 中拉取属于自己的那一份数据。<br>2.2 原有 Shuffle 的问题<br>使用 Spark SQL 时，可通过 spark.sql.shuffle.partitions 指定 Shuffle 时 Partition 个数，也即 Reducer 个数<br>该参数决定了一个 Spark SQL Job 中包含的所有 Shuffle 的 Partition 个数。如下图所示，当该参数值为 3 时，所有 Shuffle 中 Reducer 个数都为 3</p>
+<img src="/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer.png" title="【转】Spark动态设置 Shuffle Partition">
+<p>这种方法有如下问题<br>    • Partition 个数不宜设置过大<br>        ○ Reducer（代指 Spark Shuffle 过程中执行 Shuffle Read 的 Task） 个数过多，每个 Reducer 处理的数据量过小。大量小 Task 造成不必要的 Task 调度开销与可能的资源调度开销（如果开启了 Dynamic Allocation）<br>        ○ Reducer 个数过大，如果 Reducer 直接写 HDFS 会生成大量小文件，从而造成大量 addBlock RPC，Name node 可能成为瓶颈，并影响其它使用 HDFS 的应用<br>        ○ 过多 Reducer 写小文件，会造成后面读取这些小文件时产生大量 getBlock RPC，对 Name node 产生冲击<br>    • Partition 个数不宜设置过小<br>        ○ 每个 Reducer 处理的数据量太大，Spill 到磁盘开销增大<br>        ○ Reducer GC 时间增长<br>        ○ Reducer 如果写 HDFS，每个 Reducer 写入数据量较大，无法充分发挥并行处理优势<br>    • 很难保证所有 Shuffle 都最优<br>        ○ 不同的 Shuffle 对应的数据量不一样，因此最优的 Partition 个数也不一样。使用统一的 Partition 个数很难保证所有 Shuffle 都最优<br>        ○ 定时任务不同时段数据量不一样，相同的 Partition 数设置无法保证所有时间段执行时都最优<br>2.3 自动设置 Shuffle Partition 原理<br>如 Spark Shuffle 原理 一节图中所示，Stage 1 的 5 个 Partition 数据量分别为 60MB，40MB，1MB，2MB，50MB。其中 1MB 与 2MB 的 Partition 明显过小（实际场景中，部分小 Partition 只有几十 KB 及至几十字节）<br>开启 Adaptive Execution 后<br>    • Spark 在 Stage 0 的 Shuffle Write 结束后，根据各 Mapper 输出，统计得到各 Partition 的数据量，即 60MB，40MB，1MB，2MB，50MB<br>    • 通过 ExchangeCoordinator 计算出合适的 post-shuffle Partition 个数（即 Reducer）个数（本例中 Reducer 个数设置为 3）<br>    • 启动相应个数的 Reducer 任务<br>    • 每个 Reducer 读取一个或多个 Shuffle Write Partition 数据（如下图所示，Reducer 0 读取 Partition 0，Reducer 1 读取 Partition 1、2、3，Reducer 2 读取 Partition 4）</p>
+<img src="/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_auto_reducer_detail_1.png" title="【转】Spark动态设置 Shuffle Partition">
+<p>三个 Reducer 这样分配是因为<br>    • targetPostShuffleInputSize 默认为 64MB，每个 Reducer 读取数据量不超过 64MB<br>    • 如果 Partition 0 与 Partition 2 结合，Partition 1 与 Partition 3 结合，虽然也都不超过 64 MB。但读完 Partition 0 再读 Partition 2，对于同一个 Mapper 而言，如果每个 Partition 数据比较少，跳着读多个 Partition 相当于随机读，在 HDD 上性能不高<br>    • 目前的做法是只结合相临的 Partition，从而保证顺序读，提高磁盘 IO 性能<br>    • 该方案只会合并多个小的 Partition，不会将大的 Partition 拆分，因为拆分过程需要引入一轮新的 Shuffle<br>    • 基于上面的原因，默认 Partition 个数（本例中为 5）可以大一点，然后由 ExchangeCoordinator 合并。如果设置的 Partition 个数太小，Adaptive Execution 在此场景下无法发挥作用<br>由上图可见，Reducer 1 从每个 Mapper 读取 Partition 1、2、3 都有三根线，是因为原来的 Shuffle 设计中，每个 Reducer 每次通过 Fetch 请求从一个特定 Mapper 读数据时，只能读一个 Partition 的数据。也即在上图中，Reducer 1 读取 Mapper 0 的数据，需要 3 轮 Fetch 请求。对于 Mapper 而言，需要读三次磁盘，相当于随机 IO。<br>为了解决这个问题，Spark 新增接口，一次 Shuffle Read 可以读多个 Partition 的数据。如下图所示，Task 1 通过一轮请求即可同时读取 Task 0 内 Partition 0、1 和 2 的数据，减少了网络请求数量。同时 Mapper 0 一次性读取并返回三个 Partition 的数据，相当于顺序 IO，从而提升了性能。</p>
+<p>由于 Adaptive Execution 的自动设置 Reducer 是由 ExchangeCoordinator 根据 Shuffle Write 统计信息决定的，因此即使在同一个 Job 中不同 Shuffle 的 Reducer 个数都可以不一样，从而使得每次 Shuffle 都尽可能最优。<br>上文 原有 Shuffle 的问题 一节中的例子，在启用 Adaptive Execution 后，三次 Shuffle 的 Reducer 个数从原来的全部为 3 变为 2、4、3。</p>
+<img src="/Blog/2019/03/01/【转】Spark动态设置%20Shuffle%20Partition/spark_ae_fix_reducer.png" title="【转】Spark动态设置 Shuffle Partition">
+<p>2.4 使用与优化方法<br>可通过 spark.sql.adaptive.enabled=true 启用 Adaptive Execution 从而启用自动设置 Shuffle Reducer 这一特性<br>通过 spark.sql.adaptive.shuffle.targetPostShuffleInputSize 可设置每个 Reducer 读取的目标数据量，其单位是字节，默认值为 64 MB。上文例子中，如果将该值设置为 50 MB，最终效果仍然如上文所示，而不会将 Partition 0 的 60MB 拆分。具体原因上文已说明</p>
 
       
     </div>
@@ -408,7 +345,7 @@
       
         <div class="post-tags">
           
-            <a href="/Blog/tags/原理/" rel="tag"># 原理</a>
+            <a href="/Blog/tags/Spark/" rel="tag"># Spark</a>
           
         </div>
       
@@ -421,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2019/03/01/【转】Spark动态设置 Shuffle Partition/" rel="next" title="【转】Spark动态设置 Shuffle Partition">
-                <i class="fa fa-chevron-left"></i> 【转】Spark动态设置 Shuffle Partition
+              <a href="/Blog/2019/02/27/《企业IT架构转型之道》小结/" rel="next" title="《企业IT架构转型之道》小结 No.1">
+                <i class="fa fa-chevron-left"></i> 《企业IT架构转型之道》小结 No.1
               </a>
             
           </div>
@@ -431,8 +368,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/2019/03/10/《Kafka权威指南》小结/" rel="prev" title="《Kafka权威指南》小结 NO.1">
-                《Kafka权威指南》小结 NO.1 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/2019/03/03/浅析ACID、BASE、CAP原理/" rel="prev" title="浅析ACID、BASE、CAP原理">
+                浅析ACID、BASE、CAP原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,17 +429,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -560,22 +488,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅析ACID、BASE、CAP原理"><span class="nav-number">1.</span> <span class="nav-text">浅析ACID、BASE、CAP原理</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
