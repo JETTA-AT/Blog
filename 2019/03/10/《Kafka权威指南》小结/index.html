@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
+<meta name="description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递—复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
 <meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Kafka权威指南》小结 NO.1">
 <meta property="og:url" content="//yoursite.com/2019/03/10/《Kafka权威指南》小结/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
+<meta property="og:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递—复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="//yoursite.com/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png">
 <meta property="og:updated_time" content="2019-04-08T03:08:23.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Kafka权威指南》小结 NO.1">
-<meta name="twitter:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递–复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
+<meta name="twitter:description" content="Kafka权威指南0.前言不同于消息系统 集群方式运行，自由伸缩 数据连接层：保证数据传递—复制、持久化更像是实时版的hadoop 流式处理可以是批处理的超集，差异是延时 hadoop和大数据应用在数据分析 kafka更适合在核心业务上，快速响应提升用户体验 概要: 架构设计与ETL工具比较 都擅长移动数据，但kafka颠覆了传统思维 并不仅仅吧数据从一个系统拆解，塞入另一个系统 不仅将应用和数">
 <meta name="twitter:image" content="//yoursite.com/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png">
 
 
@@ -359,7 +359,7 @@
         <img src="/Blog/2019/03/10/《Kafka权威指南》小结/20190321181123.png" title="《Kafka权威指南》小结">
 <h1 id="Kafka权威指南"><a href="#Kafka权威指南" class="headerlink" title="Kafka权威指南"></a>Kafka权威指南</h1><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><h3 id="不同于消息系统"><a href="#不同于消息系统" class="headerlink" title="不同于消息系统"></a>不同于消息系统</h3><ul>
 <li>集群方式运行，自由伸缩</li>
-<li>数据连接层：保证数据传递–复制、持久化<h3 id="更像是实时版的hadoop"><a href="#更像是实时版的hadoop" class="headerlink" title="更像是实时版的hadoop"></a>更像是实时版的hadoop</h3></li>
+<li>数据连接层：保证数据传递—复制、持久化<h3 id="更像是实时版的hadoop"><a href="#更像是实时版的hadoop" class="headerlink" title="更像是实时版的hadoop"></a>更像是实时版的hadoop</h3></li>
 <li>流式处理可以是批处理的超集，差异是延时</li>
 <li>hadoop和大数据应用在数据分析</li>
 <li>kafka更适合在核心业务上，快速响应提升用户体验</li>
@@ -383,7 +383,7 @@
 </ul>
 </li>
 <li>1.2.1 消息和批次<ul>
-<li>消息有一个可选元数据—-键（一个字节数组）<ul>
+<li>消息有一个可选元数据——键（一个字节数组）<ul>
 <li>当消息以一种可控方式写入不同分区时，会用到键</li>
 <li>为键生成一个一致性散列值，用散列值对主题分区进行取模，这样可以保证具有相同键的消息总被写在相同分区上</li>
 </ul>
@@ -439,7 +439,7 @@
 <li>单个broker可以轻松处理千个分区、每秒百万级消息量</li>
 </ul>
 </li>
-<li>每个集群都有一个broker 同时 充当了–集群控制器<ul>
+<li>每个集群都有一个broker 同时 充当了—集群控制器<ul>
 <li>一个分区从属一个broker，该broker被称为分区的首领</li>
 <li>一个分区分给多个个broker：复制</li>
 </ul>
@@ -496,6 +496,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Blog/2019/03/15/机器学习：浅析K-means/" rel="prev" title="机器学习：浅析K-Means">
+                机器学习：浅析K-Means <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -579,7 +583,7 @@
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -601,7 +605,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -848,6 +852,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

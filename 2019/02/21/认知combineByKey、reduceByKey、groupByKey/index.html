@@ -355,35 +355,35 @@
 
       
         <p>简单来说reduceByKey、groupByKey都是由combineByKey核心泛型函数实现的，reduceByKey是聚合函数，groupByKey是分组函数，让我们用代码和平均数求解问题，来认识这三个重要的Spark函数。</p>
-<h2 id="combineByKey函数"><a href="#combineByKey函数" class="headerlink" title="combineByKey函数"></a>combineByKey函数</h2><pre><code class="bash">def combineByKey[C](  
+<h2 id="combineByKey函数"><a href="#combineByKey函数" class="headerlink" title="combineByKey函数"></a>combineByKey函数</h2><pre><code class="lang-bash">def combineByKey[C](  
       createCombiner: V =&gt; C,  
       mergeValue: (C, V) =&gt; C,  
       mergeCombiners: (C, C) =&gt; C,  
       partitioner: Partitioner,  
-      mapSideCombine: Boolean = <span class="literal">true</span>,  
+      mapSideCombine: Boolean = true,  
       serializer: Serializer = null)
 </code></pre>
 <h3 id="三个自定义方法"><a href="#三个自定义方法" class="headerlink" title="三个自定义方法"></a>三个自定义方法</h3><h4 id="1-createCombiner"><a href="#1-createCombiner" class="headerlink" title="1.createCombiner"></a>1.createCombiner</h4><p>这个函数把当前rdd中的值（value）作为参数，此时我们可以对其做些附加操作(类型转换)并把它返回 (这一步类似于初始化操作，分区内操作)</p>
 <h4 id="2-mergeValue"><a href="#2-mergeValue" class="headerlink" title="2. mergeValue"></a>2. mergeValue</h4><p>该函数把元素V合并到之前的元素C(createCombiner)上 (每个分区内合并)</p>
 <h4 id="3-mergeCombiner"><a href="#3-mergeCombiner" class="headerlink" title="3. mergeCombiner"></a>3. mergeCombiner</h4><p>该函数把2个元素C合并 (此函数作用范围在rdd的不同分区间内，跨分区合并)</p>
 <h3 id="使用combineByKey求平均数"><a href="#使用combineByKey求平均数" class="headerlink" title="使用combineByKey求平均数"></a>使用combineByKey求平均数</h3><p>测试代码如下：</p>
-<pre><code class="bash">import org.apache.spark.{SparkConf, SparkContext}
+<pre><code class="lang-bash">import org.apache.spark.{SparkConf, SparkContext}
 
 object combineByKey {
   def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf()
-      .<span class="built_in">set</span>(<span class="string">"spark.io.compression.codec"</span>, <span class="string">"snappy"</span>)
-      .setAppName(<span class="string">"dsp_get_request"</span>).setMaster(<span class="string">"local[*]"</span>)
+      .set(&quot;spark.io.compression.codec&quot;, &quot;snappy&quot;)
+      .setAppName(&quot;dsp_get_request&quot;).setMaster(&quot;local[*]&quot;)
     val sc = new SparkContext(sparkConf)
 
-    val initialScores = Array((<span class="string">"Fred"</span>, 88.0), (<span class="string">"Fred"</span>, 95.0), (<span class="string">"Fred"</span>, 91.0), (<span class="string">"Wilma"</span>, 93.0), (<span class="string">"Wilma"</span>, 95.0), (<span class="string">"Wilma"</span>, 98.0))
+    val initialScores = Array((&quot;Fred&quot;, 88.0), (&quot;Fred&quot;, 95.0), (&quot;Fred&quot;, 91.0), (&quot;Wilma&quot;, 93.0), (&quot;Wilma&quot;, 95.0), (&quot;Wilma&quot;, 98.0))
     val d1 = sc.parallelize(initialScores)
-    <span class="built_in">type</span> MVType = (Int, Double) //定义一个元组类型(科目计数器,分数)
+    type MVType = (Int, Double) //定义一个元组类型(科目计数器,分数)
     val rdd2 = d1.combineByKey(
       score =&gt; (1,score),  // 将score映射为一个元组，作为分区内聚合初始值
       (c1: MVType , newscore) =&gt; (c1._1 + 1 , c1._2 + newscore),  //分区内聚合
       (c1: MVType ,c2: MVType) =&gt; (c1._1 + c2._1,c1._2 + c2._2)  //分区间聚合
-    ).map{ <span class="keyword">case</span>(name ,(num ,cnt)) =&gt; (name ,num / cnt)}
+    ).map{ case(name ,(num ,cnt)) =&gt; (name ,num / cnt)}
     rdd2.foreach(println)
   }
 }
@@ -393,13 +393,13 @@ object combineByKey {
 (Wilma,95.33333333333333)
 </code></pre>
 <h4 id="使用reduceByKey求平均数"><a href="#使用reduceByKey求平均数" class="headerlink" title="使用reduceByKey求平均数"></a>使用reduceByKey求平均数</h4><p>现在用reduceByKey改写刚才的平均数算法</p>
-<pre><code class="bash">val rdd3 = d1.map(a =&gt; (a._1, (a._2, 1)))
-  .reduceByKey((a,b) =&gt; (a._1+b._1,a._2+b._2))
-  .map(t =&gt; (t._1,t._2._1/t._2._2))
-rdd3.foreach(println)
+<pre><code class="lang-bash">    val rdd3 = d1.map(a =&gt; (a._1, (a._2, 1)))
+      .reduceByKey((a,b) =&gt; (a._1+b._1,a._2+b._2))
+      .map(t =&gt; (t._1,t._2._1/t._2._2))
+    rdd3.foreach(println)
 </code></pre>
 <h2 id="reduceByKey、groupByKey"><a href="#reduceByKey、groupByKey" class="headerlink" title="reduceByKey、groupByKey"></a>reduceByKey、groupByKey</h2><p>我们再看看reduceByKey、groupByKey的区别：</p>
-<pre><code class="bash">d1.foreach(println)
+<pre><code class="lang-bash">d1.foreach(println)
 ------------------------
 (Wilma,93.0)
 (Fred,95.0)
@@ -419,7 +419,7 @@ d1.groupByKey().foreach(println)
 (Fred,CompactBuffer(88.0, 95.0, 91.0))
 </code></pre>
 <h3 id="reduceByKey效率会更高"><a href="#reduceByKey效率会更高" class="headerlink" title="reduceByKey效率会更高"></a>reduceByKey效率会更高</h3><p>其中reduceByKey(_ + _)写法同等于reduceByKey((a,b) =&gt; (a + b))<br>groupByKey会把所有的键值对集合都加载到内存中存储计算，若一个键值对太多，则会导致内存溢出。<br>reduceByKey 进行shuffle之前会在map做合并，这样就会减少shuffle 的IO 传送，效率会高一些。</p>
-<h3 id="groupByKey聚合"><a href="#groupByKey聚合" class="headerlink" title="groupByKey聚合"></a>groupByKey聚合</h3><pre><code class="bash">d1.groupByKey().map(t =&gt; (t._1,t._2.sum)).foreach(println)
+<h3 id="groupByKey聚合"><a href="#groupByKey聚合" class="headerlink" title="groupByKey聚合"></a>groupByKey聚合</h3><pre><code class="lang-bash">d1.groupByKey().map(t =&gt; (t._1,t._2.sum)).foreach(println)
 -------------------------
 (Fred,274.0)
 (Wilma,286.0)
@@ -454,7 +454,7 @@ d1.groupByKey().foreach(println)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/2019/02/18/浅析SparkSession/" rel="next" title="Spark函数:浅析SparkSession">
+              <a href="/Blog/2019/02/18/Spark函数：浅析SparkSession/" rel="next" title="Spark函数:浅析SparkSession">
                 <i class="fa fa-chevron-left"></i> Spark函数:浅析SparkSession
               </a>
             
@@ -550,7 +550,7 @@ d1.groupByKey().foreach(println)
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -572,7 +572,7 @@ d1.groupByKey().foreach(println)
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -819,6 +819,28 @@ d1.groupByKey().foreach(println)
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

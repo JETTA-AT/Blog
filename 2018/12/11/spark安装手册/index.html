@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta name="description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark安装指南">
 <meta property="og:url" content="//yoursite.com/2018/12/11/spark安装手册/index.html">
 <meta property="og:site_name" content="Jet Smith">
-<meta property="og:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta property="og:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-08T02:55:17.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark安装指南">
-<meta name="twitter:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=acce">
+<meta name="twitter:description" content="在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。一步步你会成功！ 1.Java运行环境下载JDKwget --no-cookies --no-check-certificate --header &amp;quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense">
 
 
 
@@ -354,47 +354,47 @@
 
       
         <p>在一台新装机的ubuntu 16上安装java、scala环境，并搭建hadoop、spark节点，并完成基础的配置。<br>一步步你会成功！</p>
-<h2 id="1-Java运行环境"><a href="#1-Java运行环境" class="headerlink" title="1.Java运行环境"></a>1.Java运行环境</h2><h3 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h3><pre><code class="bash">wget --no-cookies --no-check-certificate --header <span class="string">"Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"</span> <span class="string">"http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz"</span>
+<h2 id="1-Java运行环境"><a href="#1-Java运行环境" class="headerlink" title="1.Java运行环境"></a>1.Java运行环境</h2><h3 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h3><pre><code class="lang-bash">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz&quot;
 tar -zxvf jdk-8u171-linux-x64.tar.gz
-mv jdk1.8.0_171/ /usr/<span class="built_in">local</span>/
+mv jdk1.8.0_171/ /usr/local/
 </code></pre>
 <p>添加环境变量</p>
-<pre><code class="bash">vim /etc/profile
+<pre><code class="lang-bash">vim /etc/profile
 --添加以下
-<span class="built_in">set</span> java environment
-exportJAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-exportJRE_HOME=<span class="variable">${JAVA_HOME}</span>/jre
-exportCLASSPATH=.:<span class="variable">${JAVA_HOME}</span>/lib/dt.JAVA_HOME/lib/tools.jar:<span class="variable">${JRE_HOME}</span>/lib
-exportPATH=<span class="variable">${JAVA_HOME}</span>/bin:<span class="variable">${PATH}</span>
+set java environment
+exportJAVA_HOME=/usr/local/jdk1.8.0_171
+exportJRE_HOME=${JAVA_HOME}/jre
+exportCLASSPATH=.:${JAVA_HOME}/lib/dt.JAVA_HOME/lib/tools.jar:${JRE_HOME}/lib
+exportPATH=${JAVA_HOME}/bin:${PATH}
 </code></pre>
 <p>使用命令使环境变量立即生效</p>
-<pre><code class="bash"><span class="built_in">source</span> /etc/profile
+<pre><code class="lang-bash">source /etc/profile
 </code></pre>
 <p>添加环境变量</p>
-<pre><code class="bash">vim /etc/environment
+<pre><code class="lang-bash">vim /etc/environment
 
-PATH=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:<span class="variable">$JAVA_HOME</span>/bin"</span>
-<span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib:<span class="variable">$JAVA_HOME</span>/jre/lib
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
+PATH=&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$JAVA_HOME/bin&quot;
+export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+export JAVA_HOME=/usr/local/jdk1.8.0_171
 </code></pre>
 <p>输入以下命令使环境变量立即生效</p>
-<pre><code class="bash"><span class="built_in">source</span> /etc/environment
+<pre><code class="lang-bash">source /etc/environment
 </code></pre>
 <h2 id="2-hadoop"><a href="#2-hadoop" class="headerlink" title="2.hadoop"></a>2.hadoop</h2><h3 id="hadoop版本下载"><a href="#hadoop版本下载" class="headerlink" title="hadoop版本下载"></a>hadoop版本下载</h3><p>hadoop-2.7.6.tar.gz</p>
-<pre><code class="bash">wget <span class="string">"http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz"</span>
+<pre><code class="lang-bash">wget &quot;http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.6/hadoop-2.7.6.tar.gz&quot;
 ``` bash
 
 ``` bash
 tar -zxvf hadoop-2.7.6.tar.gz -C /usr/
 </code></pre>
-<h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><pre><code class="bash">vim ~/.bashrc
-<span class="built_in">export</span> HADOOP_HOME=/usr/hadoop-2.7.6
-<span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$HADOOP_HOME</span>/sbin
+<h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><pre><code class="lang-bash">vim ~/.bashrc
+export HADOOP_HOME=/usr/hadoop-2.7.6
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 vim /usr/hadoop-2.7.6/etc/hadoop/hadoop-env.sh
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
+export JAVA_HOME=/usr/local/jdk1.8.0_171
 </code></pre>
-<h3 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h3><h4 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
+<h3 id="配置文件设置"><a href="#配置文件设置" class="headerlink" title="配置文件设置"></a>配置文件设置</h3><h4 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h4><pre><code class="lang-bash">vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
 
 &lt;property&gt;
     &lt;name&gt;fs.defaultFS&lt;/name&gt;
@@ -412,7 +412,7 @@ vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
     &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
 &lt;/property&gt;
 </code></pre>
-<h4 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/hdfs-site.xml
+<h4 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h4><pre><code class="lang-bash">vim /usr/hadoop-2.7.6/etc/hadoop/hdfs-site.xml
 
 &lt;configuration&gt;
 &lt;property&gt;
@@ -431,7 +431,7 @@ vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
 &lt;/property&gt;
 &lt;/configuration&gt;
 </code></pre>
-<h4 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h4><pre><code class="bash">vim /usr/hadoop-2.7.6/etc/hadoop/yarn-site.xml
+<h4 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h4><pre><code class="lang-bash">vim /usr/hadoop-2.7.6/etc/hadoop/yarn-site.xml
 
 &lt;configuration&gt;
  &lt;property&gt;
@@ -441,45 +441,42 @@ vim /usr/hadoop-2.7.6/etc/hadoop/core-site.xml
 &lt;/configuration&gt;
 </code></pre>
 <h3 id="hadoop初始化和启动"><a href="#hadoop初始化和启动" class="headerlink" title="hadoop初始化和启动"></a>hadoop初始化和启动</h3><p>初始化hadoop：</p>
-<pre><code class="bash">/usr/hadoop-2.7.6/bin/hdfs namenode -format
+<pre><code class="lang-bash">/usr/hadoop-2.7.6/bin/hdfs namenode -format
 </code></pre>
-<p>##启动hadoop</p>
-<pre><code class="bash"><span class="variable">$HADOOP_HOME</span>/sbin/start-all.sh
+<h2 id="启动hadoop"><a href="#启动hadoop" class="headerlink" title="启动hadoop"></a>启动hadoop</h2><pre><code class="lang-bash">$HADOOP_HOME/sbin/start-all.sh
 </code></pre>
-<h2 id="scala安装"><a href="#scala安装" class="headerlink" title="scala安装"></a>scala安装</h2><pre><code class="bash">wget <span class="string">"https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz"</span>
+<h2 id="scala安装"><a href="#scala安装" class="headerlink" title="scala安装"></a>scala安装</h2><pre><code class="lang-bash">wget &quot;https://downloads.lightbend.com/scala/2.11.12/scala-2.11.12.tgz&quot;
 
 tar -zxvf scala-2.11.12.tgz
-mv scala-2.11.12/ /usr/<span class="built_in">local</span>/
+mv scala-2.11.12/ /usr/local/
 
 vim /etc/profile
-<span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:/usr/local/scala-2.11.12/bin"</span>
+export PATH=&quot;$PATH:/usr/local/scala-2.11.12/bin&quot;
 </code></pre>
-<h2 id="spark安装"><a href="#spark安装" class="headerlink" title="spark安装"></a>spark安装</h2><pre><code class="bash">wget <span class="string">"http://mirror.bit.edu.cn/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz"</span>
+<h2 id="spark安装"><a href="#spark安装" class="headerlink" title="spark安装"></a>spark安装</h2><pre><code class="lang-bash">wget &quot;http://mirror.bit.edu.cn/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz&quot;
 
 tar -zxvf spark-2.3.0-bin-hadoop2.7.tgz -C /usr/
 </code></pre>
-<p>###添加环境变量</p>
-<pre><code class="bash">vim ~/.bashrc
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><pre><code class="lang-bash">vim ~/.bashrc
 
-<span class="built_in">export</span> SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7
-<span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$SPARK_HOME</span>/sbin:<span class="variable">$PATH</span>
+export SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7
+export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 </code></pre>
-<p>###修改spark配置</p>
-<pre><code class="bash">cp /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh.template /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
+<h3 id="修改spark配置"><a href="#修改spark配置" class="headerlink" title="修改spark配置"></a>修改spark配置</h3><pre><code class="lang-bash">cp /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh.template /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
 
 vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
 
-<span class="built_in">export</span> SPARK_MASTER_IP=localhost
-<span class="built_in">export</span> SPARK_WORKER_MEMORY=8g 
-<span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_171
-<span class="built_in">export</span> SCALA_HOME=/usr/<span class="built_in">local</span>/scala-2.11.12 
-<span class="built_in">export</span> SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7 
-<span class="built_in">export</span> HADOOP_CONF_DIR=/usr/hadoop-2.7.6/etc/hadoop
-<span class="built_in">export</span> SPARK_LIBRARY_PATH=<span class="variable">$SPARK_HOME</span>/lib 
-<span class="built_in">export</span> SCALA_LIBRARY_PATH=<span class="variable">$SPARK_LIBRARY_PATH</span> 
-<span class="built_in">export</span> SPARK_WORKER_CORES=5
-<span class="built_in">export</span> SPARK_WORKER_INSTANCES=1
-<span class="built_in">export</span> SPARK_MASTER_PORT=7077
+export SPARK_MASTER_IP=localhost
+export SPARK_WORKER_MEMORY=8g 
+export JAVA_HOME=/usr/local/jdk1.8.0_171
+export SCALA_HOME=/usr/local/scala-2.11.12 
+export SPARK_HOME=/usr/spark-2.3.0-bin-hadoop2.7 
+export HADOOP_CONF_DIR=/usr/hadoop-2.7.6/etc/hadoop
+export SPARK_LIBRARY_PATH=$SPARK_HOME/lib 
+export SCALA_LIBRARY_PATH=$SPARK_LIBRARY_PATH 
+export SPARK_WORKER_CORES=5
+export SPARK_WORKER_INSTANCES=1
+export SPARK_MASTER_PORT=7077
 </code></pre>
 
       
@@ -601,7 +598,7 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -623,7 +620,7 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -663,7 +660,7 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java运行环境"><span class="nav-number">1.</span> <span class="nav-text">1.Java运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载JDK"><span class="nav-number">1.1.</span> <span class="nav-text">下载JDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-hadoop"><span class="nav-number">2.</span> <span class="nav-text">2.hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop版本下载"><span class="nav-number">2.1.</span> <span class="nav-text">hadoop版本下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.2.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件设置"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#core-site-xml"><span class="nav-number">2.3.1.</span> <span class="nav-text">core-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hdfs-site-xml"><span class="nav-number">2.3.2.</span> <span class="nav-text">hdfs-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yarn-site-xml"><span class="nav-number">2.3.3.</span> <span class="nav-text">yarn-site.xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop初始化和启动"><span class="nav-number">2.4.</span> <span class="nav-text">hadoop初始化和启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scala安装"><span class="nav-number">3.</span> <span class="nav-text">scala安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark安装"><span class="nav-number">4.</span> <span class="nav-text">spark安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java运行环境"><span class="nav-number">1.</span> <span class="nav-text">1.Java运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载JDK"><span class="nav-number">1.1.</span> <span class="nav-text">下载JDK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-hadoop"><span class="nav-number">2.</span> <span class="nav-text">2.hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop版本下载"><span class="nav-number">2.1.</span> <span class="nav-text">hadoop版本下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.2.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件设置"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#core-site-xml"><span class="nav-number">2.3.1.</span> <span class="nav-text">core-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hdfs-site-xml"><span class="nav-number">2.3.2.</span> <span class="nav-text">hdfs-site.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yarn-site-xml"><span class="nav-number">2.3.3.</span> <span class="nav-text">yarn-site.xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop初始化和启动"><span class="nav-number">2.4.</span> <span class="nav-text">hadoop初始化和启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动hadoop"><span class="nav-number">3.</span> <span class="nav-text">启动hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scala安装"><span class="nav-number">4.</span> <span class="nav-text">scala安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark安装"><span class="nav-number">5.</span> <span class="nav-text">spark安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加环境变量"><span class="nav-number">5.1.</span> <span class="nav-text">添加环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改spark配置"><span class="nav-number">5.2.</span> <span class="nav-text">修改spark配置</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -870,6 +867,28 @@ vim /usr/spark-2.3.0-bin-hadoop2.7/conf/spark-env.sh
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

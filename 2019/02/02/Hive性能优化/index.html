@@ -380,7 +380,7 @@
 <li>严格模式下查询必须带有分区</li>
 </ul>
 <p>可以减少读入的分区数目。明显提高查询速度<br>Hive 自动执行这种裁剪优化。</p>
-<p>分区参数为：hive.optimize.pruner=true;–默认值为真</p>
+<p>分区参数为：hive.optimize.pruner=true;—默认值为真</p>
 <h3 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h3><p>写SQL要先了解数据本身的特点，如果有join ,group操作的话，要注意是否会有数据倾斜<br>如果出现数据倾斜，应当做如下处理：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> hive.exec.reducers.max=200;</span><br><span class="line"><span class="built_in">set</span> mapred.reduce.tasks= 200;--增大Reduce个数</span><br><span class="line"><span class="built_in">set</span> hive.groupby.mapaggr.checkinterval=100000 ;--这个是group的键对应的记录条数超过这个值则会进行分拆,值根据具体数据量设置</span><br><span class="line"><span class="built_in">set</span> hive.groupby.skewindata=<span class="literal">true</span>; --如果是group by过程出现倾斜 应该设置为<span class="literal">true</span></span><br><span class="line"><span class="built_in">set</span> hive.skewjoin.key=100000; --这个是join的键对应的记录条数超过这个值则会进行分拆,值根据具体数据量设置</span><br><span class="line"><span class="built_in">set</span> hive.optimize.skewjoin=<span class="literal">true</span>;--如果是join 过程出现倾斜 应该设置为<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="小文件的合并"><a href="#小文件的合并" class="headerlink" title="小文件的合并"></a>小文件的合并</h3><p>大量的小文件导致文件数目过多，给HDFS带来压力，对hive处理的效率影响比较大，可以合并map和reduce产生的文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hive.merge.mapfiles = <span class="literal">true</span>;--是否和并 Map 输出文件，默认为 True</span><br><span class="line">hive.merge.mapredfiles = <span class="literal">false</span>;--是否合并 Reduce 输出文件，默认为 False</span><br><span class="line">hive.merge.size.per.task = 256*1000*1000;--合并文件的大小</span><br></pre></td></tr></table></figure></p>
 <h3 id="使用ORC存储"><a href="#使用ORC存储" class="headerlink" title="使用ORC存储"></a>使用ORC存储</h3><p>使用更先进的存储，如ORC，更高的压缩比，一个轻量级的索引，例如数字数据会统计min max 等，提供给优化器使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE EXTERNAL TABLE vt_orc(</span><br><span class="line">  `route_id` string, </span><br><span class="line">  `mac` string, </span><br><span class="line">  `appname` string, </span><br><span class="line">  `vid` string, </span><br><span class="line">  `ts` string</span><br><span class="line">  )</span><br><span class="line">PARTITIONED BY ( </span><br><span class="line">  `date` string) </span><br><span class="line">ROW FORMAT SERDE </span><br><span class="line">  <span class="string">'org.apache.hadoop.hive.ql.io.orc.OrcSerde'</span> </span><br><span class="line">WITH SERDEPROPERTIES ( </span><br><span class="line">  <span class="string">'field.delim'</span>=<span class="string">'\u0001'</span>, </span><br><span class="line">  <span class="string">'serialization.format'</span>=<span class="string">'\u0001'</span>) </span><br><span class="line">STORED AS ORC</span><br><span class="line">LOCATION</span><br><span class="line">  <span class="string">'hdfs://ireservice/tmp/vt_orc'</span>;</span><br></pre></td></tr></table></figure></p>
@@ -425,7 +425,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/2019/02/18/浅析SparkSession/" rel="prev" title="Spark函数:浅析SparkSession">
+              <a href="/Blog/2019/02/18/Spark函数：浅析SparkSession/" rel="prev" title="Spark函数:浅析SparkSession">
                 Spark函数:浅析SparkSession <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -511,7 +511,7 @@
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -533,7 +533,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -780,6 +780,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

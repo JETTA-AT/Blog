@@ -369,7 +369,7 @@
 <p>HDFS也是按照Master和Slave的结构。分NameNode、SecondaryNameNode、DataNode这几个角色。<br>NameNode：是Master节点，是大领导。管理数据块映射；处理客户端的读写请求；配置副本策略；管理HDFS的名称空间；<br>SecondaryNameNode：是一个小弟，分担大哥namenode的工作量；是NameNode的冷备份；合并fsimage和fsedits然后再发给namenode。<br>DataNode：Slave节点，奴隶，干活的。负责存储client发来的数据块block；执行数据块的读写操作。<br>热备份：b是a的热备份，如果a坏掉。那么b马上运行代替a的工作。<br>冷备份：b是a的冷备份，如果a坏掉。那么b不能马上代替a工作。但是b上存储a的一些信息，减少a坏掉之后的损失。<br>fsimage:元数据镜像文件（文件系统的目录树。）<br>edits：元数据的操作日志（针对文件系统做的修改操作记录）<br>namenode内存中存储的是=fsimage+edits。<br>SecondaryNameNode负责定时默认1小时，从namenode上，获取fsimage和edits来进行合并，然后再发送给namenode。减少namenode的工作量。</p>
 <h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="写操作"><a href="#写操作" class="headerlink" title="写操作"></a>写操作</h3><img src="/Blog/2019/01/18/浅析HDFS原理/26162921-2de9d28df9b54fe6a97a6fd88f1cb03f.jpg" title="浅析HDFS原理">
 <p>有一个文件FileA，100M大小。Client将FileA写入到HDFS上。<br>HDFS按默认配置。<br>HDFS分布在三个机架上Rack1，Rack2，Rack3。</p>
-<p>a. Client将FileA按64M分块。分成两块，block1和Block2;<br>b. Client向nameNode发送写数据请求，如图蓝色虚线①——&gt;。<br>c. NameNode节点，记录block信息。并返回可用的DataNode，如粉色虚线②———&gt;。<br>    Block1: host2,host1,host3<br>    Block2: host7,host8,host4<br>    原理：NameNode具有RackAware机架感知功能，这个可以配置。<br>    若client为DataNode节点，那存储block时，规则为：副本1，同client的节点上；副本2，不同机架节点上；副本3，同第二个副本机架的另一个节点上；其他副本随机挑选。<br>    若client不为DataNode节点，那存储block时，规则为：副本1，随机选择一个节点上；副本2，不同副本1，机架上；副本3，同副本2相同的另一个节点上；其他副本随机挑选。<br>d. client向DataNode发送block1；发送过程是以流式写入。</p>
+<p>a. Client将FileA按64M分块。分成两块，block1和Block2;<br>b. Client向nameNode发送写数据请求，如图蓝色虚线①———&gt;。<br>c. NameNode节点，记录block信息。并返回可用的DataNode，如粉色虚线②————-&gt;。<br>    Block1: host2,host1,host3<br>    Block2: host7,host8,host4<br>    原理：NameNode具有RackAware机架感知功能，这个可以配置。<br>    若client为DataNode节点，那存储block时，规则为：副本1，同client的节点上；副本2，不同机架节点上；副本3，同第二个副本机架的另一个节点上；其他副本随机挑选。<br>    若client不为DataNode节点，那存储block时，规则为：副本1，随机选择一个节点上；副本2，不同副本1，机架上；副本3，同副本2相同的另一个节点上；其他副本随机挑选。<br>d. client向DataNode发送block1；发送过程是以流式写入。</p>
 <h3 id="流式写入过程，"><a href="#流式写入过程，" class="headerlink" title="流式写入过程，"></a>流式写入过程，</h3><pre><code>1&gt;将64M的block1按64k的package划分;
 2&gt;然后将第一个package发送给host2;
 3&gt;host2接收完后，将第一个package发送给host1，同时client想host2发送第二个package；
@@ -512,7 +512,7 @@
               
                 <a href="/Blog/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -534,7 +534,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -781,6 +781,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
