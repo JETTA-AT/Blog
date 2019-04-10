@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jet Smith</title>
   
-  
+  <subtitle>Endless sea of pale</subtitle>
   <link href="/Blog/atom.xml" rel="self"/>
   
   <link href="//yoursite.com/"/>
